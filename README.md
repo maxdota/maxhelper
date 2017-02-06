@@ -10,7 +10,7 @@ Gradle
 --------
 
 ```groovy
-compile 'com.maxdota.maxhelper:maxhelper:1.0.0'
+compile 'com.maxdota.maxhelper:maxhelper:1.0.2'
 ```
 
 License

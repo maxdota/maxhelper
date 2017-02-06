@@ -61,7 +61,7 @@ public class MaxHelper {
         }
     }
 
-    public static void playAudio(String audioPath, MediaPlayer.OnCompletionListener onCompletionListener) {
+    public static MediaPlayer playAudio(String audioPath, MediaPlayer.OnCompletionListener onCompletionListener) {
         if (sMediaPlayer != null) {
             sMediaPlayer.release();
         }
@@ -82,8 +82,10 @@ public class MaxHelper {
             sMediaPlayer.setOnPreparedListener(sOnPreparedListener);
             sMediaPlayer.setOnCompletionListener(onCompletionListener);
             sMediaPlayer.prepareAsync();
+            return sMediaPlayer;
         } catch (IOException e) {
             Log.d("MaxHelper", "Audio error " + e.getMessage());
+            return null;
         }
     }
 }
