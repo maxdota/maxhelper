@@ -1,15 +1,29 @@
 package com.maxdota.maxhelper;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+
+import com.maxdota.maxhelper.base.BaseActivity;
+import com.maxdota.maxhelper.model.MaxAudioData;
 
 import java.io.IOException;
 
@@ -22,21 +36,31 @@ public class MaxHelper {
         D, E, I, V
     }
 
-    private static final String LOG_TAG = "MaxHelper";
+    private final String LOG_TAG = "MaxHelper";
 
-    public static LogLevel sLogLevel;
-    private static MediaPlayer sMediaPlayer;
-    private static MediaPlayer.OnPreparedListener sOnPreparedListener;
-    private static int sAudioStartTime;
+    private LogLevel mLogLevel;
+    private MediaPlayer mMediaPlayer;
+    private MediaPlayer.OnPreparedListener mOnPreparedListener;
+    private int mAudioStartTime;
 
-    public static Class<? extends MaxAudioData> sAudioClass;
+    public Class<? extends MaxAudioData> mAudioClass;
 
-    public static void showAudioPicker(Activity activity, int requestCode) {
+    private Handler mHandler;
+
+    public MaxHelper(BaseActivity activity) {
+        mHandler = activity.getHandler();
+    }
+
+    public void setLogLevel(LogLevel logLevel) {
+        mLogLevel = logLevel;
+    }
+
+    public void showAudioPicker(Activity activity, int requestCode) {
         Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
         activity.startActivityForResult(i, requestCode);
     }
 
-    public static String getAudioPath(Context context, Uri uri) {
+    public String getAudioPath(Context context, Uri uri) {
         String[] queries = {MediaStore.Audio.Media.DATA};
         Cursor cursor = null;
         try {
@@ -54,8 +78,8 @@ public class MaxHelper {
         return null;
     }
 
-    public static MaxAudioData retrieveAudioDataWithChildClass(String path) {
-        if (TextUtils.isEmpty(path) || sAudioClass == null) {
+    public MaxAudioData retrieveAudioDataWithChildClass(String path) {
+        if (TextUtils.isEmpty(path) || mAudioClass == null) {
             return null;
         }
         try {
@@ -64,7 +88,7 @@ public class MaxHelper {
             String title = metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
             String artist = metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
             String duration = metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
-            MaxAudioData audioData = sAudioClass.newInstance();
+            MaxAudioData audioData = mAudioClass.newInstance();
             audioData.setTitle(title);
             audioData.setArtist(artist);
             audioData.setDuration(duration);
@@ -79,7 +103,7 @@ public class MaxHelper {
         return null;
     }
 
-    public static MaxAudioData retrieveAudioData(String path) {
+    public MaxAudioData retrieveAudioData(String path) {
         if (TextUtils.isEmpty(path)) {
             return null;
         }
@@ -96,77 +120,222 @@ public class MaxHelper {
         }
     }
 
-    public static MediaPlayer playAudio(String audioPath,
-                                        MediaPlayer.OnCompletionListener onCompletionListener,
-                                        MediaPlayer.OnErrorListener onErrorListener) {
+    public MediaPlayer playAudio(String audioPath,
+                                 MediaPlayer.OnCompletionListener onCompletionListener,
+                                 MediaPlayer.OnErrorListener onErrorListener) {
         return playAudio(audioPath, 0, onCompletionListener, onErrorListener);
     }
 
-    public static MediaPlayer playAudio(String audioPath, final int startTime,
-                                        MediaPlayer.OnCompletionListener onCompletionListener,
-                                        MediaPlayer.OnErrorListener onErrorListener) {
-        sAudioStartTime = startTime;
-        if (sMediaPlayer != null) {
-            sMediaPlayer.release();
+    public MediaPlayer playAudio(String audioPath, final int startTime,
+                                 MediaPlayer.OnCompletionListener onCompletionListener,
+                                 MediaPlayer.OnErrorListener onErrorListener) {
+        mAudioStartTime = startTime;
+        if (mMediaPlayer != null) {
+            mMediaPlayer.release();
         }
-        sMediaPlayer = new MediaPlayer();
+        mMediaPlayer = new MediaPlayer();
 
-        if (sOnPreparedListener == null) {
-            sOnPreparedListener = new MediaPlayer.OnPreparedListener() {
+        if (mOnPreparedListener == null) {
+            mOnPreparedListener = new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
-                    if (mp == sMediaPlayer) {
-                        mp.seekTo(sAudioStartTime);
+                    if (mp == mMediaPlayer) {
+                        mp.seekTo(mAudioStartTime);
                         mp.start();
                     }
                 }
             };
         }
         try {
-            sMediaPlayer.setDataSource(audioPath);
-            sMediaPlayer.setOnPreparedListener(sOnPreparedListener);
-            sMediaPlayer.setOnCompletionListener(onCompletionListener);
-            sMediaPlayer.setOnErrorListener(onErrorListener);
-            sMediaPlayer.prepareAsync();
-            return sMediaPlayer;
+            mMediaPlayer.setDataSource(audioPath);
+            mMediaPlayer.setOnPreparedListener(mOnPreparedListener);
+            mMediaPlayer.setOnCompletionListener(onCompletionListener);
+            mMediaPlayer.setOnErrorListener(onErrorListener);
+            mMediaPlayer.prepareAsync();
+            return mMediaPlayer;
         } catch (IOException e) {
             log("Audio error " + e.getMessage());
             return null;
         }
     }
 
-    public static MediaPlayer prepareAudio(String audioPath, MediaPlayer.OnPreparedListener onPreparedListener,
-                                           MediaPlayer.OnCompletionListener onCompletionListener,
-                                           MediaPlayer.OnErrorListener onErrorListener) {
-        if (sMediaPlayer != null) {
-            sMediaPlayer.release();
+    public MediaPlayer prepareAudio(String audioPath, MediaPlayer.OnPreparedListener onPreparedListener,
+                                    MediaPlayer.OnCompletionListener onCompletionListener,
+                                    MediaPlayer.OnErrorListener onErrorListener) {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.release();
         }
-        sMediaPlayer = new MediaPlayer();
+        mMediaPlayer = new MediaPlayer();
 
         try {
-            sMediaPlayer.setDataSource(audioPath);
-            sMediaPlayer.setOnPreparedListener(onPreparedListener);
-            sMediaPlayer.setOnCompletionListener(onCompletionListener);
-            sMediaPlayer.setOnErrorListener(onErrorListener);
-            sMediaPlayer.prepareAsync();
-            return sMediaPlayer;
+            mMediaPlayer.setDataSource(audioPath);
+            mMediaPlayer.setOnPreparedListener(onPreparedListener);
+            mMediaPlayer.setOnCompletionListener(onCompletionListener);
+            mMediaPlayer.setOnErrorListener(onErrorListener);
+            mMediaPlayer.prepareAsync();
+            return mMediaPlayer;
         } catch (IOException e) {
             log("Audio error " + e.getMessage());
             return null;
         }
     }
 
-    public static void log(String message) {
-        if (sLogLevel != null && message != null) {
-            if (sLogLevel == LogLevel.D) {
+    public void log(String message) {
+        if (mLogLevel != null && message != null) {
+            if (mLogLevel == LogLevel.D) {
                 Log.d(LOG_TAG, message);
-            } else if (sLogLevel == LogLevel.E) {
+            } else if (mLogLevel == LogLevel.E) {
                 Log.e(LOG_TAG, message);
-            } else if (sLogLevel == LogLevel.I) {
+            } else if (mLogLevel == LogLevel.I) {
                 Log.i(LOG_TAG, message);
-            } else if (sLogLevel == LogLevel.V) {
+            } else if (mLogLevel == LogLevel.V) {
                 Log.v(LOG_TAG, message);
             }
         }
+    }
+
+    // return true if app already gains the permission
+    public boolean checkAndRequestPermission(final Activity activity, final String permission,
+                                             String explanation, final int requestCode) {
+        if (ContextCompat.checkSelfPermission(activity, permission)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
+                ActivityCompat.requestPermissions(activity, new String[]{permission}, requestCode);
+            } else {
+                showYesNoDialog(activity, explanation, activity.getString(R.string.ok),
+                        activity.getString(R.string.cancel), new YesNoDialog() {
+                            @Override
+                            public void onSelected(boolean isYes) {
+                                if (isYes) {
+                                    ActivityCompat.requestPermissions(activity,
+                                            new String[]{permission}, requestCode);
+                                }
+                            }
+                        });
+            }
+            return false;
+        }
+        return true;
+    }
+
+    // return true if permission is granted
+    public boolean onRequestPermissionsResult(int requestCode, @NonNull int[] grantResults,
+                                              int appRequestCode) {
+        if (requestCode == appRequestCode) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void showYesNoDialog(final Context context,
+                                final String action, final String yes, final String no,
+                                final YesNoDialog listener) {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (listener != null) {
+                            listener.onSelected(which == Dialog.BUTTON_POSITIVE);
+                        }
+                    }
+                };
+
+                Dialog dialog = builder.setPositiveButton(yes, onClickListener)
+                        .setNegativeButton(no, onClickListener)
+                        .setMessage(action).setCancelable(false).create();
+
+                dialog.show();
+            }
+        });
+    }
+
+    public void showConfirmationDialog(final Activity activity, final String action,
+                                       final Confirmable confirmable) {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                String question = activity.getResources().getString(R.string.do_you_want_to_s, action);
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                Dialog dialog = builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        confirmable.onConfirmed();
+                    }
+                }).setNegativeButton(R.string.no, null).setMessage(question).setCancelable(false).create();
+                dialog.show();
+            }
+        });
+    }
+
+    public void showInputDialog(final Activity activity,
+                                final String title, final String action, final String textHolder,
+                                final InputDialog listener) {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+                View view = activity.getLayoutInflater().inflate(R.layout.dialog_content_input, null);
+                final EditText input = (EditText) view.findViewById(R.id.input);
+                input.setText(textHolder);
+
+                DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (listener != null) {
+                            if (which == Dialog.BUTTON_POSITIVE) {
+                                listener.onInput(input.getText().toString());
+                            } else {
+                                listener.onCancel();
+                            }
+                        }
+                    }
+                };
+
+                Dialog dialog = builder.setPositiveButton(R.string.ok, onClickListener)
+                        .setNegativeButton(R.string.cancel, onClickListener)
+                        .setTitle(title).setView(view)
+                        .setMessage(action).setCancelable(false).create();
+
+                dialog.show();
+            }
+        });
+    }
+
+    public void showErrorDialog(final Activity activity, final String message) {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                Dialog dialog = builder.setPositiveButton(R.string.ok, null)
+                        .setTitle(R.string.error)
+                        .setMessage(message).setCancelable(false).create();
+                dialog.show();
+            }
+        });
+    }
+
+    public interface YesNoDialog {
+        void onSelected(boolean isYes);
+    }
+
+    public interface Confirmable {
+        void onConfirmed();
+    }
+
+    public interface InputDialog {
+        void onInput(String text);
+
+        void onCancel();
+    }
+
+    public void hideKeyboard(Context context, View view) {
+        ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE))
+                .hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

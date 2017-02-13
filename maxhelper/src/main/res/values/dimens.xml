@@ -1,0 +1,12 @@
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="tiny_distance">5dp</dimen>
+    <dimen name="small_distance">10dp</dimen>
+    <dimen name="standard_distance">20dp</dimen>
+    <dimen name="large_distance">30dp</dimen>
+    <dimen name="icon_size">50dp</dimen>
+    <dimen name="icon_padding">10dp</dimen>
+</resources>

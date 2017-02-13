@@ -1,4 +1,4 @@
-package com.maxdota.maxhelper;
+package com.maxdota.maxhelper.model;
 
 import java.util.Locale;
 
