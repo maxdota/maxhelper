@@ -1,20 +1,19 @@
 package com.maxdota.maxhelper.example;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.maxdota.maxhelper.MaxAudioData;
-import com.maxdota.maxhelper.MaxHelper;
+import com.maxdota.maxhelper.base.BaseActivity;
+import com.maxdota.maxhelper.model.MaxAudioData;
 
 /**
  * Created by Nguyen Hong Ngoc on 2/6/2017.
  */
 
-public class MainActivity extends Activity implements View.OnClickListener, MediaPlayer.OnCompletionListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, MediaPlayer.OnCompletionListener {
     private static final int REQUEST_CODE_PICK_AUDIO = 101;
 
     private TextView mAudioText;
@@ -33,7 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Medi
         int id = v.getId();
         switch (id) {
             case R.id.select_audio:
-                MaxHelper.showAudioPicker(this, REQUEST_CODE_PICK_AUDIO);
+                mMaxHelper.showAudioPicker(this, REQUEST_CODE_PICK_AUDIO);
                 break;
         }
     }
@@ -41,11 +40,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Medi
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_PICK_AUDIO) {
-            String audioPath = MaxHelper.getAudioPath(this, data.getData());
+            String audioPath = mMaxHelper.getAudioPath(this, data.getData());
 
-            MaxHelper.playAudio(audioPath, this);
+            mMaxHelper.playAudio(audioPath, this, null);
 
-            MaxAudioData audioData = MaxHelper.retrieveAudioData(audioPath);
+            MaxAudioData audioData = mMaxHelper.retrieveAudioData(audioPath);
             if (audioData == null) {
                 mAudioText.setText(R.string.reading_audio_error);
             } else {
