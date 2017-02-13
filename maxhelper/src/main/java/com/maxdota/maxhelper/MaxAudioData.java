@@ -53,6 +53,14 @@ public class MaxAudioData {
         return mDuration;
     }
 
+    public long getDurationTime() {
+        return mDurationTime;
+    }
+
+    public String getDurationTimeString() {
+        return String.valueOf(mDurationTime);
+    }
+
     public String getPath() {
         return mPath;
     }
