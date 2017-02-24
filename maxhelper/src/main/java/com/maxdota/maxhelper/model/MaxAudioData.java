@@ -31,14 +31,7 @@ public class MaxAudioData {
 
     public void convertDurationTime(long durationTime) {
         mDurationTime = durationTime;
-        int hour = (int) (mDurationTime / TIME_PER_HOUR);
-        int minute = (int) (mDurationTime % TIME_PER_HOUR / TIME_PER_MINUTE);
-        int second = (int) (mDurationTime % TIME_PER_MINUTE / TIME_PER_SECOND);
-        if (hour > 0) {
-            mDuration = String.format(Locale.US, "%d:%02d:%02d", hour, minute, second);
-        } else {
-            mDuration = String.format(Locale.US, "%d:%02d", minute, second);
-        }
+        mDuration = parseDurationTime(durationTime);
     }
 
     public String getTitle() {
@@ -79,5 +72,16 @@ public class MaxAudioData {
 
     public void setPath(String path) {
         mPath = path;
+    }
+
+    public static String parseDurationTime(long durationTime) {
+        int hour = (int) (durationTime / TIME_PER_HOUR);
+        int minute = (int) (durationTime % TIME_PER_HOUR / TIME_PER_MINUTE);
+        int second = (int) (durationTime % TIME_PER_MINUTE / TIME_PER_SECOND);
+        if (hour > 0) {
+            return String.format(Locale.US, "%d:%02d:%02d", hour, minute, second);
+        } else {
+            return String.format(Locale.US, "%d:%02d", minute, second);
+        }
     }
 }

@@ -254,6 +254,18 @@ public class MaxHelper {
         });
     }
 
+    public void showExplanationDialog(final Activity activity, final String message) {
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                Dialog dialog = builder.setPositiveButton(R.string.ok, null)
+                        .setMessage(message).create();
+                dialog.show();
+            }
+        });
+    }
+
     public void showConfirmationDialog(final Activity activity, final String action,
                                        final Confirmable confirmable) {
         mHandler.post(new Runnable() {

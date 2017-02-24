@@ -51,13 +51,23 @@ public class BaseActivity extends AppCompatActivity {
 
     public void showCircleLoader() {
         if (mCircleLoader != null) {
-            mCircleLoader.setVisibility(View.VISIBLE);
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCircleLoader.setVisibility(View.VISIBLE);
+                }
+            });
         }
     }
 
     public void hideCircleLoader() {
         if (mCircleLoader != null) {
-            mCircleLoader.setVisibility(View.GONE);
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mCircleLoader.setVisibility(View.GONE);
+                }
+            });
         }
     }
 }
