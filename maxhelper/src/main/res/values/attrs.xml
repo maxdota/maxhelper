@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CellWidget">
+        <attr name="cellTitle" format="reference"/>
+        <attr name="cellDescription" format="reference"/>
+        <attr name="cellHasSwitch" format="boolean"/>
+        <attr name="cellDefaultImage" format="reference"/>
+        <attr name="cellTitleColor" format="reference"/>
+        <attr name="cellDescriptionColor" format="reference"/>
+    </declare-styleable>
+</resources>

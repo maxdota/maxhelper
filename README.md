@@ -5,13 +5,16 @@ Max Helper
 This library includes many helpers to help simplifying Android app development.
 
 
-
-Gradle
+Gradle installation
 --------
 
 ```groovy
-compile 'com.maxdota.maxhelper:maxhelper:1.0.2'
+compile 'com.maxdota.maxhelper:maxhelper:1.0.6'
 ```
+
+Usage
+--------
+(will be updated soon)
 
 License
 --------

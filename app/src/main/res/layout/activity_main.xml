@@ -1,21 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center_horizontal"
-              android:orientation="vertical"
-              android:padding="@dimen/standard_distance">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="@dimen/standard_distance">
 
-    <TextView
-        android:id="@+id/audio_text"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/audio_text_default" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/select_audio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/standard_distance"
-        android:text="@string/select_audio" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/audio_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/audio_text_default"/>
+
+        <Button
+            android:id="@+id/select_audio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/standard_distance"
+            android:text="@string/select_audio"/>
+
+        <ImageView
+            android:id="@+id/picked_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/standard_distance"/>
+
+        <Button
+            android:id="@+id/select_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/standard_distance"
+            android:text="@string/select_photo"/>
+
+        <com.maxdota.maxhelper.widget.CellWidget
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/overlay"
+            app:cellDescription="@string/cell_description"
+            app:cellDescriptionColor="@color/colorPrimary"
+            app:cellHasSwitch="true"
+            app:cellTitle="@string/cell_title"
+            app:cellTitleColor="@color/colorAccent"/>
+
+        <com.maxdota.maxhelper.widget.CellWidget
+            android:id="@+id/profile_cell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standard_distance"
+            android:background="@color/overlay"
+            app:cellDefaultImage="@mipmap/ic_launcher"
+            app:cellDescription="@string/cell_description"
+            app:cellTitle="@string/cell_title"/>
+    </LinearLayout>
+</ScrollView>

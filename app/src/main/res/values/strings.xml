@@ -5,4 +5,7 @@
     <string name="reading_audio_error">Reading Audio Error</string>
     <string name="audio_finish">Finish Playing Audio</string>
     <string name="audio_text_default">Select an audio to play</string>
+    <string name="select_photo">Select Photo</string>
+    <string name="cell_title">Cell Title</string>
+    <string name="cell_description">Cell Description</string>
 </resources>

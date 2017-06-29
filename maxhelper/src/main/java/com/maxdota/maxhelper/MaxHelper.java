@@ -17,7 +17,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -93,12 +92,8 @@ public class MaxHelper {
             audioData.setArtist(artist);
             audioData.setDuration(duration);
             return audioData;
-        } catch (IllegalArgumentException e) {
-            log("Audio error " + e.getMessage());
-        } catch (InstantiationException e) {
-            log("Instance error " + e.getMessage());
-        } catch (IllegalAccessException e) {
-            log("Instance error " + e.getMessage());
+        } catch (IllegalArgumentException | IllegalAccessException | InstantiationException e) {
+            BaseActivity.debugLog("Retrieve data with child error: " + e.getMessage());
         }
         return null;
     }
@@ -115,7 +110,7 @@ public class MaxHelper {
             String duration = metaRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
             return new MaxAudioData(title, artist, duration, path);
         } catch (IllegalArgumentException e) {
-            log("Audio error " + e.getMessage());
+            BaseActivity.debugLog("Retrieve audio data error: " + e.getMessage());
             return null;
         }
     }
@@ -154,7 +149,7 @@ public class MaxHelper {
             mMediaPlayer.prepareAsync();
             return mMediaPlayer;
         } catch (IOException e) {
-            log("Audio error " + e.getMessage());
+            BaseActivity.debugLog("Play audio error: " + e.getMessage());
             return null;
         }
     }
@@ -175,22 +170,8 @@ public class MaxHelper {
             mMediaPlayer.prepareAsync();
             return mMediaPlayer;
         } catch (IOException e) {
-            log("Audio error " + e.getMessage());
+            BaseActivity.debugLog("Prepare audio error: " + e.getMessage());
             return null;
-        }
-    }
-
-    public void log(String message) {
-        if (mLogLevel != null && message != null) {
-            if (mLogLevel == LogLevel.D) {
-                Log.d(LOG_TAG, message);
-            } else if (mLogLevel == LogLevel.E) {
-                Log.e(LOG_TAG, message);
-            } else if (mLogLevel == LogLevel.I) {
-                Log.i(LOG_TAG, message);
-            } else if (mLogLevel == LogLevel.V) {
-                Log.v(LOG_TAG, message);
-            }
         }
     }
 
@@ -349,5 +330,36 @@ public class MaxHelper {
     public void hideKeyboard(Context context, View view) {
         ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE))
                 .hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public void showKeyboard(Context context) {
+        ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE))
+                .toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+    }
+
+    // need to retrieve READ_EXTERNAL_STORAGE permission first
+    public void dispatchSelectPhotoIntent(BaseActivity activity, int requestCode) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        activity.startActivityForResult(Intent.createChooser(intent,
+                activity.getString(R.string.select_photo)), requestCode);
+    }
+
+    public String getImagePathFromSelectUri(BaseActivity activity, Uri uri) {
+        Cursor cursor = activity.getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        String document_id = cursor.getString(0);
+        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
+        cursor.close();
+
+        cursor = activity.getContentResolver().query(
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
+        cursor.moveToFirst();
+        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+        cursor.close();
+
+        return path;
     }
 }

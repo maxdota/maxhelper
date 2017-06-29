@@ -43,9 +43,15 @@ public class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, messageRes, Toast.LENGTH_SHORT).show();
     }
 
-    public static void log(String message) {
-        if (BaseApplication.IS_DEBUGGING && message != null) {
+    public static void debugLog(String message) {
+        if (BaseApplication.sIsDebugging && message != null) {
             Log.e(BaseApplication.sAppName, message);
+        }
+    }
+
+    public static void errorLog(String message) {
+        if (message != null) {
+            Log.e(BaseApplication.sAppName + " error", message);
         }
     }
 
