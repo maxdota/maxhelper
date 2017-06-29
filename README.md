@@ -1,9 +1,9 @@
 Max Helper
 =======
 
-
 This library includes many helpers to help simplifying Android app development.
 
+![](website/static/sample_screenshot.png)
 
 Gradle installation
 --------
