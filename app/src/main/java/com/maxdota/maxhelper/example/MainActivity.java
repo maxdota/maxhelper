@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
         } else if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_SELECT_PHOTO) {
             String imagePath = mMaxHelper.getImagePathFromSelectUri(this, data.getData());
-            Picasso.with(this)
+            Picasso.get()
                     .load(new File(imagePath))
                     .fit().centerCrop()
                     .transform(new RoundCornerTransformation(getResources()

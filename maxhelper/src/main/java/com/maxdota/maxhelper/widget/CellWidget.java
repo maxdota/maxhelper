@@ -104,7 +104,7 @@ public class CellWidget extends RelativeLayout implements View.OnClickListener {
 
     public void setCellImage(final String imageUrl) {
         if (!TextUtils.isEmpty(imageUrl)) {
-            Picasso.with(mActivity).load(imageUrl)
+            Picasso.get().load(imageUrl)
                     .transform(new CircleTransformation())
                     .networkPolicy(NetworkPolicy.OFFLINE)
                     .into(mCellImage, new Callback() {
@@ -113,8 +113,8 @@ public class CellWidget extends RelativeLayout implements View.OnClickListener {
                         }
 
                         @Override
-                        public void onError() {
-                            Picasso.with(mActivity).load(imageUrl)
+                        public void onError(Exception e) {
+                            Picasso.get().load(imageUrl)
                                     .transform(new CircleTransformation())
                                     .into(mCellImage);
                         }
