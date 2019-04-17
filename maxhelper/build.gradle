@@ -24,3 +24,30 @@ dependencies {
     implementation 'com.squareup.okhttp:okhttp:2.7.5'
     implementation 'com.squareup.okhttp:okhttp-urlconnection:2.7.5'
 }
+
+ext {
+    bintrayRepo = 'android-tools'
+    bintrayName = 'com.maxdota.maxhelper'
+
+    publishedGroupId = 'com.maxdota.maxhelper'
+    libraryName = 'maxhelper'
+    artifact = 'maxhelper'
+
+    libraryDescription = 'This library includes many helpers to help simplifying Android app development.'
+
+    siteUrl = 'https://github.com/maxdota/maxhelper'
+    gitUrl = 'https://github.com/maxdota/maxhelper'
+
+    libraryVersion = '1.0.7'
+
+    developerId = 'maxdota'
+    developerName = 'MaxDotA'
+    developerEmail = 'maxdota.developer@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
