@@ -9,7 +9,7 @@ Gradle installation
 --------
 
 ```groovy
-compile 'com.maxdota.maxhelper:maxhelper:1.0.6'
+compile 'com.maxdota.maxhelper:maxhelper:1.0.7'
 ```
 
 Usage
