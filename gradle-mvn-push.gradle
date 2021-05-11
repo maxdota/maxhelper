@@ -1,0 +1,28 @@
+apply plugin: 'maven-publish'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def gitLabKey = properties.getProperty('gitLabKey')
+
+publishing {
+    publications {
+        library(MavenPublication) {
+            groupId "com.maxdota.maxhelper"
+            artifactId "maxhelper"
+            version "1.0.8"
+            artifact "$buildDir/outputs/aar/maxhelper-debug.aar"
+        }
+    }
+    repositories {
+        maven {
+            url "https://gitlab.com/api/v4/projects/26576533/packages/maven"
+            credentials(HttpHeaderCredentials) {
+                name = "Private-Token"
+                value = gitLabKey
+            }
+            authentication {
+                header(HttpHeaderAuthentication)
+            }
+        }
+    }
+}

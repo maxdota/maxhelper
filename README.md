@@ -5,11 +5,23 @@ This library includes many helpers to help simplifying Android app development.
 
 ![](website/static/sample_screenshot.png)
 
-Gradle installation
+Maven Installation
 --------
-
+Add to `build.gradle` at root folder
 ```groovy
-compile 'com.maxdota.maxhelper:maxhelper:1.0.7'
+allprojects {
+    repositories {
+        ...
+        maven {
+            name "Max Helper Library"
+            url "https://gitlab.com/api/v4/projects/26576533/packages/maven"
+        }
+    }
+}
+```
+Add to `build.gradle` at app folder
+```groovy
+compilation 'com.maxdota.maxhelper:maxhelper:1.0.7'
 ```
 
 Usage
