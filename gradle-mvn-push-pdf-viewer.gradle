@@ -10,10 +10,10 @@ def gitLabKey = properties.getProperty('gitLabKey')
 publishing {
     publications {
         library(MavenPublication) {
-            groupId "com.maxdota.maxhelper"
-            artifactId "maxhelper"
-            version "1.0.9"
-            artifact "$buildDir/outputs/aar/maxhelper-debug.aar"
+            groupId "com.maxdota"
+            artifactId "pdfviewer"
+            version "3.2.0-beta.1"
+            artifact "$buildDir/outputs/aar/android-pdf-viewer-debug.aar"
         }
     }
     repositories {

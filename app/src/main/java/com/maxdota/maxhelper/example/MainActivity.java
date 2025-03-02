@@ -52,27 +52,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        switch (id) {
-            case R.id.select_audio:
-                if (mMaxHelper.checkAndRequestPermission(MainActivity.this,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        "The app needs to read your files for audio data",
-                        PERMISSION_REQUEST_READ_EXTERNAL_STORAGE)) {
-                    mMaxHelper.showAudioPicker(this, REQUEST_CODE_PICK_AUDIO);
-                } else {
-                    mAppStatus = AppStatus.PICK_AUDIO;
-                }
-                break;
-            case R.id.select_photo:
-                if (mMaxHelper.checkAndRequestPermission(MainActivity.this,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        "The app needs to read your files for audio data",
-                        PERMISSION_REQUEST_READ_EXTERNAL_STORAGE)) {
-                    mMaxHelper.dispatchSelectPhotoIntent(this, REQUEST_CODE_SELECT_PHOTO);
-                } else {
-                    mAppStatus = AppStatus.SELECT_PHOTO;
-                }
-                break;
+        if (id == R.id.select_audio) {
+            if (mMaxHelper.checkAndRequestPermission(MainActivity.this,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                "The app needs to read your files for audio data",
+                PERMISSION_REQUEST_READ_EXTERNAL_STORAGE)) {
+                mMaxHelper.showAudioPicker(this, REQUEST_CODE_PICK_AUDIO);
+            } else {
+                mAppStatus = AppStatus.PICK_AUDIO;
+            }
+        } else if (id == R.id.select_photo) {
+            if (mMaxHelper.checkAndRequestPermission(MainActivity.this,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                "The app needs to read your files for audio data",
+                PERMISSION_REQUEST_READ_EXTERNAL_STORAGE)) {
+                mMaxHelper.dispatchSelectPhotoIntent(this, REQUEST_CODE_SELECT_PHOTO);
+            } else {
+                mAppStatus = AppStatus.SELECT_PHOTO;
+            }
         }
     }
 
@@ -88,16 +85,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 mAudioText.setText(R.string.reading_audio_error);
             } else {
                 mAudioText.setText(getString(R.string.audio_text_format,
-                        audioData.getTitle(), audioData.getArtist(), audioData.getDuration()));
+                    audioData.getTitle(), audioData.getArtist(), audioData.getDuration()));
             }
         } else if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_SELECT_PHOTO) {
             String imagePath = mMaxHelper.getImagePathFromSelectUri(this, data.getData());
             Picasso.get()
-                    .load(new File(imagePath))
-                    .fit().centerCrop()
-                    .transform(new RoundCornerTransformation(getResources()
-                            .getDimensionPixelSize(R.dimen.corner_radius)))
-                    .into(mPickedImage);
+                .load(new File(imagePath))
+                .fit().centerCrop()
+                .transform(new RoundCornerTransformation(getResources()
+                    .getDimensionPixelSize(R.dimen.corner_radius)))
+                .into(mPickedImage);
         }
     }
 

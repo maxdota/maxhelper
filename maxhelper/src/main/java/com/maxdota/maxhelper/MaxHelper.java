@@ -1,5 +1,6 @@
 package com.maxdota.maxhelper;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -346,6 +347,7 @@ public class MaxHelper {
                 activity.getString(R.string.select_photo)), requestCode);
     }
 
+    @SuppressLint("Range")
     public String getImagePathFromSelectUri(BaseActivity activity, Uri uri) {
         Cursor cursor = activity.getContentResolver().query(uri, null, null, null, null);
         cursor.moveToFirst();
@@ -357,7 +359,10 @@ public class MaxHelper {
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
         cursor.moveToFirst();
-        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+        String path = "";
+        if (cursor.getColumnIndex(MediaStore.Images.Media.DATA) >= 0) {
+            path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+        }
         cursor.close();
 
         return path;
