@@ -12,7 +12,7 @@ publishing {
         library(MavenPublication) {
             groupId "com.maxdota"
             artifactId "pdfviewer"
-            version "3.2.0-beta.1"
+            version "3.2.0-beta.1-4"
             artifact "$buildDir/outputs/aar/android-pdf-viewer-debug.aar"
         }
     }
