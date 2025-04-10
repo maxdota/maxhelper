@@ -1,0 +1,68 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.google.zxing.client.android.zxing-android-embedded-mergeReleaseResources-16:/values-cs/values-cs.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.9\\transforms\\6cbcf83bf6365a2b87f9b0de35310eb5\\transformed\\core-1.16.0\\res\\values-cs\\values-cs.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,255,356,455,560,667,786",
+                        "endColumns": "97,101,100,98,104,106,118,100",
+                        "endOffsets": "148,250,351,450,555,662,781,882"
+                    }
+                },
+                {
+                    "source": "D:\\code\\maxhelper\\zxing-android-embedded\\res-orig\\values-cs\\zxing_strings.xml",
+                    "from": {
+                        "startLines": "17,18,19,20",
+                        "startColumns": "2,2,2,2",
+                        "startOffsets": "632,689,734,882",
+                        "endColumns": "56,44,147,81",
+                        "endOffsets": "686,731,879,961"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "887,946,993,1143",
+                        "endColumns": "58,46,149,83",
+                        "endOffsets": "941,988,1138,1222"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.google.zxing.client.android.zxing-android-embedded-release-18:/values-cs/values-cs.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.9\\transforms\\6cbcf83bf6365a2b87f9b0de35310eb5\\transformed\\core-1.16.0\\res\\values-cs\\values-cs.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,255,356,455,560,667,786",
+                        "endColumns": "97,101,100,98,104,106,118,100",
+                        "endOffsets": "148,250,351,450,555,662,781,882"
+                    }
+                },
+                {
+                    "source": "D:\\code\\maxhelper\\zxing-android-embedded\\res-orig\\values-cs\\zxing_strings.xml",
+                    "from": {
+                        "startLines": "17,18,19,20",
+                        "startColumns": "2,2,2,2",
+                        "startOffsets": "632,689,734,882",
+                        "endColumns": "56,44,147,81",
+                        "endOffsets": "686,731,879,961"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "887,946,993,1143",
+                        "endColumns": "58,46,149,83",
+                        "endOffsets": "941,988,1138,1222"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable/notification_icon_background.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable/ic_call_decline.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable/ic_call_decline.xml"
+    },
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable/notification_bg.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable/ic_call_answer_video_low.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable/ic_call_answer_video_low.xml"
+    },
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable/ic_call_decline_low.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable/ic_call_decline_low.xml"
+    },
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable/ic_call_answer.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable/ic_call_answer.xml"
+    },
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable/ic_call_answer_low.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable/ic_call_answer_low.xml"
+    },
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable/notification_tile_bg.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable/notification_bg_low.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable/ic_call_answer_video.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable/ic_call_answer_video.xml"
+    }
+]

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.4.2" type="conditional_incidents">
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 11">
+        <fix-replace
+            description="Delete @TargetApi"
+            replacement=""
+            priority="0">
+            <range
+                file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/google/zxing/integration/android/IntentIntegrator.java"
+                startOffset="4962"
+                endOffset="5003"/>
+        </fix-replace>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/google/zxing/integration/android/IntentIntegrator.java"
+            line="151"
+            column="5"
+            startOffset="4962"
+            endLine="151"
+            endColumn="46"
+            endOffset="5003"/>
+        <map>
+            <condition minGE="fffffffffffffc00"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 15">
+        <fix-replace
+            description="Delete @TargetApi"
+            replacement=""
+            priority="0">
+            <range
+                file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+                startOffset="7281"
+                endOffset="7335"/>
+        </fix-replace>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+            line="174"
+            column="5"
+            startOffset="7281"
+            endLine="174"
+            endColumn="59"
+            endOffset="7335"/>
+        <map>
+            <condition minGE="ffffffffffffc000"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 15">
+        <fix-replace
+            description="Delete @TargetApi"
+            replacement=""
+            priority="0">
+            <range
+                file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+                startOffset="7841"
+                endOffset="7895"/>
+        </fix-replace>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+            line="186"
+            column="5"
+            startOffset="7841"
+            endLine="186"
+            endColumn="59"
+            endOffset="7895"/>
+        <map>
+            <condition minGE="ffffffffffffc000"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 15">
+        <fix-replace
+            description="Delete @TargetApi"
+            replacement=""
+            priority="0">
+            <range
+                file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+                startOffset="8408"
+                endOffset="8462"/>
+        </fix-replace>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+            line="198"
+            column="5"
+            startOffset="8408"
+            endLine="198"
+            endColumn="59"
+            endOffset="8462"/>
+        <map>
+            <condition minGE="ffffffffffffc000"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 15">
+        <fix-replace
+            description="Delete @TargetApi"
+            replacement=""
+            priority="0">
+            <range
+                file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+                startOffset="8689"
+                endOffset="8743"/>
+        </fix-replace>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+            line="204"
+            column="5"
+            startOffset="8689"
+            endLine="204"
+            endColumn="59"
+            endOffset="8743"/>
+        <map>
+            <condition minGE="ffffffffffffc000"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 15">
+        <fix-replace
+            description="Delete @TargetApi"
+            replacement=""
+            priority="0">
+            <range
+                file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+                startOffset="13110"
+                endOffset="13164"/>
+        </fix-replace>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+            line="317"
+            column="5"
+            startOffset="13110"
+            endLine="317"
+            endColumn="59"
+            endOffset="13164"/>
+        <map>
+            <condition minGE="ffffffffffffc000"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 14">
+        <fix-replace
+            description="Delete @TargetApi"
+            replacement=""
+            priority="0">
+            <range
+                file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/CameraPreview.java"
+                startOffset="4741"
+                endOffset="4755"/>
+        </fix-replace>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/CameraPreview.java"
+            line="146"
+            column="5"
+            startOffset="4741"
+            endLine="146"
+            endColumn="19"
+            endOffset="4755"/>
+        <map>
+            <condition minGE="ffffffffffffe000"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 23">
+        <fix-replace
+            description="Delete @TargetApi"
+            replacement=""
+            priority="0">
+            <range
+                file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/CaptureManager.java"
+                startOffset="8258"
+                endOffset="8272"/>
+        </fix-replace>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/CaptureManager.java"
+            line="239"
+            column="5"
+            startOffset="8258"
+            endLine="239"
+            endColumn="19"
+            endOffset="8272"/>
+        <map>
+            <condition minGE="ffffffffffc00000"/>
+        </map>
+    </incident>
+
+</incidents>

@@ -1,0 +1,68 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.google.zxing.client.android.zxing-android-embedded-mergeReleaseResources-16:/values-eu/values-eu.xml",
+            "map": [
+                {
+                    "source": "D:\\code\\maxhelper\\zxing-android-embedded\\res-orig\\values-eu\\zxing_strings.xml",
+                    "from": {
+                        "startLines": "17,18,19,20",
+                        "startColumns": "2,2,2,2",
+                        "startOffsets": "632,694,741,887",
+                        "endColumns": "61,46,145,109",
+                        "endOffsets": "691,738,884,994"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "887,951,1000,1148",
+                        "endColumns": "63,48,147,111",
+                        "endOffsets": "946,995,1143,1255"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.9\\transforms\\6cbcf83bf6365a2b87f9b0de35310eb5\\transformed\\core-1.16.0\\res\\values-eu\\values-eu.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,256,356,459,564,667,786",
+                        "endColumns": "97,102,99,102,104,102,118,100",
+                        "endOffsets": "148,251,351,454,559,662,781,882"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "com.google.zxing.client.android.zxing-android-embedded-release-18:/values-eu/values-eu.xml",
+            "map": [
+                {
+                    "source": "D:\\code\\maxhelper\\zxing-android-embedded\\res-orig\\values-eu\\zxing_strings.xml",
+                    "from": {
+                        "startLines": "17,18,19,20",
+                        "startColumns": "2,2,2,2",
+                        "startOffsets": "632,694,741,887",
+                        "endColumns": "61,46,145,109",
+                        "endOffsets": "691,738,884,994"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "887,951,1000,1148",
+                        "endColumns": "63,48,147,111",
+                        "endOffsets": "946,995,1143,1255"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Admin\\.gradle\\caches\\8.9\\transforms\\6cbcf83bf6365a2b87f9b0de35310eb5\\transformed\\core-1.16.0\\res\\values-eu\\values-eu.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,256,356,459,564,667,786",
+                        "endColumns": "97,102,99,102,104,102,118,100",
+                        "endOffsets": "148,251,351,454,559,662,781,882"
+                    }
+                }
+            ]
+        }
+    ]
+}

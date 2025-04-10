@@ -1,0 +1,6 @@
+[
+    {
+        "merged": "com.google.zxing.client.android.zxing-android-embedded-release-18:/drawable-v21/notification_action_background.xml",
+        "source": "com.google.zxing.client.android.zxing-android-embedded-core-1.16.0-7:/drawable-v21/notification_action_background.xml"
+    }
+]

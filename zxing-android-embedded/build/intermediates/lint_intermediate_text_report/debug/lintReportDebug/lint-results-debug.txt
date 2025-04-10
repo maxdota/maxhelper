@@ -1,0 +1,75 @@
+D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\CameraPreview.java:270: Warning: By convention, the custom view (CameraPreview) and the declare-styleable (zxing_camera_preview) should have the same name (various editor features rely on this convention) [CustomViewStyleable]
+        TypedArray styledAttributes = getContext().obtainStyledAttributes(attrs, R.styleable.zxing_camera_preview);
+                                                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\DecoratedBarcodeView.java:84: Warning: By convention, the custom view (DecoratedBarcodeView) and the declare-styleable (zxing_view) should have the same name (various editor features rely on this convention) [CustomViewStyleable]
+        TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.zxing_view);
+                                                                           ~~~~~~~~~~~~~~~~~~~~~~
+D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\ViewfinderView.java:77: Warning: By convention, the custom view (ViewfinderView) and the declare-styleable (zxing_finder) should have the same name (various editor features rely on this convention) [CustomViewStyleable]
+        TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.zxing_finder);
+                                                                           ~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "CustomViewStyleable":
+   The convention for custom views is to use a declare-styleable whose name
+   matches the custom view class name. The IDE relies on this convention such
+   that for example code completion can be offered for attributes in a custom
+   view in layout XML resource files.
+
+   (Similarly, layout parameter classes should use the suffix _Layout.)
+
+D:\code\maxhelper\zxing-android-embedded\build.gradle:8: Warning: A newer version of androidx.fragment:fragment than 1.3.6 is available: 1.8.6 [GradleDependency]
+    implementation 'androidx.fragment:fragment:1.3.6'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\code\maxhelper\zxing-android-embedded\build.gradle:10: Warning: A newer version of junit:junit than 4.13.1 is available: 4.13.2 [GradleDependency]
+    testImplementation 'junit:junit:4.13.1'
+                       ~~~~~~~~~~~~~~~~~~~~
+D:\code\maxhelper\zxing-android-embedded\build.gradle:11: Warning: A newer version of org.mockito:mockito-core than 1.9.5 is available: 5.15.2 [GradleDependency]
+    testImplementation 'org.mockito:mockito-core:1.9.5'
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+D:\code\maxhelper\zxing-android-embedded\AndroidManifest.xml:35: Warning: Should not restrict activity to fixed orientation. This may not be suitable for different form factors, causing the app to be letterboxed. [DiscouragedApi]
+                android:screenOrientation="sensorLandscape"
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "DiscouragedApi":
+   Discouraged APIs are allowed and are not deprecated, but they may be unfit
+   for common use (e.g. due to slow performance or subtle behavior).
+
+D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\camera\CameraConfigurationUtils.java:174: Warning: Unnecessary; SDK_INT is always >= 15 [ObsoleteSdkInt]
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\camera\CameraConfigurationUtils.java:186: Warning: Unnecessary; SDK_INT is always >= 15 [ObsoleteSdkInt]
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\camera\CameraConfigurationUtils.java:198: Warning: Unnecessary; SDK_INT is always >= 15 [ObsoleteSdkInt]
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\camera\CameraConfigurationUtils.java:204: Warning: Unnecessary; SDK_INT is always >= 15 [ObsoleteSdkInt]
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\camera\CameraConfigurationUtils.java:317: Warning: Unnecessary; SDK_INT is always >= 15 [ObsoleteSdkInt]
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\CameraPreview.java:146: Warning: Unnecessary; SDK_INT is always >= 14 [ObsoleteSdkInt]
+    @TargetApi(14)
+    ~~~~~~~~~~~~~~
+D:\code\maxhelper\zxing-android-embedded\src\com\google\zxing\integration\android\IntentIntegrator.java:151: Warning: Unnecessary; SDK_INT is always >= 11 [ObsoleteSdkInt]
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+0 errors, 14 warnings

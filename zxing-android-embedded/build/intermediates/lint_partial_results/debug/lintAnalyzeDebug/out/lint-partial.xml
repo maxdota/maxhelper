@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.4.2" type="partial_results">
+    <map id="UnusedResources">
+        <location id="R.color.zxing_custom_viewfinder_laser"
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*resDir*1}/values/zxing_colors.xml"
+            line="27"
+            column="10"
+            startOffset="1173"
+            endLine="27"
+            endColumn="46"
+            endOffset="1209"/>
+        <location id="R.color.zxing_custom_possible_result_points"
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*resDir*1}/values/zxing_colors.xml"
+            line="25"
+            column="10"
+            startOffset="1044"
+            endLine="25"
+            endColumn="52"
+            endOffset="1086"/>
+        <location id="R.color.zxing_custom_result_view"
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*resDir*1}/values/zxing_colors.xml"
+            line="26"
+            column="10"
+            startOffset="1114"
+            endLine="26"
+            endColumn="41"
+            endOffset="1145"/>
+        <location id="R.color.zxing_custom_viewfinder_mask"
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*resDir*1}/values/zxing_colors.xml"
+            line="28"
+            column="10"
+            startOffset="1235"
+            endLine="28"
+            endColumn="45"
+            endOffset="1270"/>
+        <entry
+            name="model"
+            string="attr[zxing_scanner_layout(D),zxing_framing_rect_width(D),zxing_framing_rect_height(D),zxing_use_texture_view(D),zxing_preview_scaling_strategy(D),zxing_possible_result_points(D),zxing_result_view(D),zxing_viewfinder_laser(D),zxing_viewfinder_mask(D),zxing_viewfinder_laser_visibility(D)],color[zxing_transparent(U),zxing_status_text(U),zxing_possible_result_points(U),zxing_result_view(U),zxing_viewfinder_laser(U),zxing_viewfinder_mask(U),zxing_custom_possible_result_points(D),zxing_custom_result_view(D),zxing_custom_viewfinder_laser(D),zxing_custom_viewfinder_mask(D)],id[zxing_barcode_surface(U),zxing_viewfinder_view(U),zxing_status_view(U),zxing_barcode_scanner(U),zxing_decode(U),zxing_preview_failed(U),zxing_decode_failed(U),zxing_decode_succeeded(U),zxing_possible_result_points(U),zxing_back_button(D),zxing_prewiew_size_ready(U),zxing_camera_error(U),zxing_camera_closed(U)],layout[zxing_barcode_scanner(U),zxing_capture(U)],raw[zxing_beep(U)],string[zxing_app_name(U),zxing_button_ok(U),zxing_msg_camera_framework_bug(U),zxing_msg_default_status(U),define_zxingandroidembedded(DRK),library_zxingandroidembedded_author(DRK),library_zxingandroidembedded_authorWebsite(DRK),library_zxingandroidembedded_libraryName(DRK),library_zxingandroidembedded_libraryDescription(DRK),library_zxingandroidembedded_libraryWebsite(DRK),library_zxingandroidembedded_libraryVersion(DRK),library_zxingandroidembedded_isOpenSource(DRK),library_zxingandroidembedded_repositoryLink(DRK),library_zxingandroidembedded_licenseId(DRK)],style[zxing_CaptureTheme(U)],styleable[zxing_view(U),zxing_camera_preview(U),zxing_finder(U),zxing_camera_preview_zxing_framing_rect_width(R),zxing_camera_preview_zxing_framing_rect_height(R),zxing_camera_preview_zxing_use_texture_view(R),zxing_camera_preview_zxing_preview_scaling_strategy(R),zxing_view_zxing_scanner_layout(R),zxing_finder_zxing_viewfinder_mask(R),zxing_finder_zxing_result_view(R),zxing_finder_zxing_viewfinder_laser(R),zxing_finder_zxing_possible_result_points(R),zxing_finder_zxing_viewfinder_laser_visibility(R)];21^a^27^b;;;"/>
+    </map>
+
+</incidents>

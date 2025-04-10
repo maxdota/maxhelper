@@ -1,0 +1,26 @@
+<variant
+    name="debug"
+    package="com.google.zxing.client.android"
+    minSdkVersion="19"
+    targetSdkVersion="19"
+    debuggable="true"
+    mergedManifest="build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml"
+    partialResultsDir="build\intermediates\unit_test_lint_partial_results\debug\lintAnalyzeDebugUnitTest\out"
+    desugaredMethodsFiles="C:\Users\Admin\.gradle\caches\8.9\transforms\08bc4daba83edaebc8ac506fe98a9162\transformed\D8BackportedDesugaredMethods.txt">
+  <buildFeatures
+      namespacing="REQUIRED"/>
+  <sourceProviders>
+  </sourceProviders>
+  <testSourceProviders>
+    <sourceProvider
+        manifests="test\AndroidManifest.xml"
+        javaDirectories="test\java;src\testDebug\java;test\kotlin;src\testDebug\kotlin"
+        assetsDirectories="test\assets;src\testDebug\assets"
+        unitTest="true"/>
+  </testSourceProviders>
+  <testFixturesSourceProviders>
+  </testFixturesSourceProviders>
+  <artifact
+      type="UNIT_TEST">
+  </artifact>
+</variant>
