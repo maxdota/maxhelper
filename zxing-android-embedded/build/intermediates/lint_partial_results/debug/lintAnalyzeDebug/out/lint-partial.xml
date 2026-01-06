@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<incidents format="6" by="lint 8.4.2" type="partial_results">
+<incidents format="6" by="lint 8.12.3" type="partial_results">
     <map id="UnusedResources">
-        <location id="R.color.zxing_custom_viewfinder_laser"
-            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*resDir*1}/values/zxing_colors.xml"
-            line="27"
-            column="10"
-            startOffset="1173"
-            endLine="27"
-            endColumn="46"
-            endOffset="1209"/>
         <location id="R.color.zxing_custom_possible_result_points"
             file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*resDir*1}/values/zxing_colors.xml"
             line="25"
@@ -25,6 +17,14 @@
             endLine="26"
             endColumn="41"
             endOffset="1145"/>
+        <location id="R.color.zxing_custom_viewfinder_laser"
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*resDir*1}/values/zxing_colors.xml"
+            line="27"
+            column="10"
+            startOffset="1173"
+            endLine="27"
+            endColumn="46"
+            endOffset="1209"/>
         <location id="R.color.zxing_custom_viewfinder_mask"
             file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*resDir*1}/values/zxing_colors.xml"
             line="28"

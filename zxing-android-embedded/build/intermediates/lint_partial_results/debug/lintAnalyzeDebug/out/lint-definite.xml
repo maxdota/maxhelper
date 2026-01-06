@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<incidents format="6" by="lint 8.4.2" type="incidents">
-
-    <incident
-        id="DiscouragedApi"
-        severity="warning"
-        message="Should not restrict activity to fixed orientation. This may not be suitable for different form factors, causing the app to be letterboxed.">
-        <location
-            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*manifest*0}"
-            line="35"
-            column="17"
-            startOffset="1718"
-            endLine="35"
-            endColumn="60"
-            endOffset="1761"/>
-    </incident>
+<incidents format="6" by="lint 8.12.3" type="incidents">
 
     <incident
         id="CustomViewStyleable"
@@ -60,12 +46,32 @@
     <incident
         id="GradleDependency"
         severity="warning"
-        message="A newer version of androidx.fragment:fragment than 1.3.6 is available: 1.8.6">
+        message="A newer version of androidx.core:core than 1.16.0 is available: 1.17.0">
         <fix-replace
-            description="Change to 1.8.6"
+            description="Change to 1.17.0"
+            family="Update versions"
+            oldString="1.16.0"
+            replacement="1.17.0"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*projectDir}/build.gradle"
+            line="7"
+            column="20"
+            startOffset="179"
+            endLine="7"
+            endColumn="47"
+            endOffset="206"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.fragment:fragment than 1.3.6 is available: 1.8.9">
+        <fix-replace
+            description="Change to 1.8.9"
             family="Update versions"
             oldString="1.3.6"
-            replacement="1.8.6"
+            replacement="1.8.9"
             priority="0"/>
         <location
             file="${:zxing-android-embedded*projectDir}/build.gradle"
@@ -79,6 +85,45 @@
 
     <incident
         id="GradleDependency"
+        severity="warning"
+        message="A newer version of `compileSdkVersion` than 34 is available: 36">
+        <fix-replace
+            description="Set compileSdkVersion to 36"
+            oldString="34"
+            replacement="36"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*projectDir}/build.gradle"
+            line="16"
+            column="5"
+            startOffset="407"
+            endLine="16"
+            endColumn="25"
+            endOffset="427"/>
+    </incident>
+
+    <incident
+        id="NewerVersionAvailable"
+        severity="warning"
+        message="A newer version of com.google.zxing:core than 3.4.1 is available: 3.5.4">
+        <fix-replace
+            description="Change to 3.5.4"
+            family="Update versions"
+            oldString="3.4.1"
+            replacement="3.5.4"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*projectDir}/build.gradle"
+            line="5"
+            column="9"
+            startOffset="129"
+            endLine="5"
+            endColumn="38"
+            endOffset="158"/>
+    </incident>
+
+    <incident
+        id="NewerVersionAvailable"
         severity="warning"
         message="A newer version of junit:junit than 4.13.1 is available: 4.13.2">
         <fix-replace
@@ -98,14 +143,14 @@
     </incident>
 
     <incident
-        id="GradleDependency"
+        id="NewerVersionAvailable"
         severity="warning"
-        message="A newer version of org.mockito:mockito-core than 1.9.5 is available: 5.15.2">
+        message="A newer version of org.mockito:mockito-core than 1.9.5 is available: 5.21.0">
         <fix-replace
-            description="Change to 5.15.2"
+            description="Change to 5.21.0"
             family="Update versions"
             oldString="1.9.5"
-            replacement="5.15.2"
+            replacement="5.21.0"
             priority="0"/>
         <location
             file="${:zxing-android-embedded*projectDir}/build.gradle"
@@ -115,6 +160,199 @@
             endLine="11"
             endColumn="56"
             endOffset="361"/>
+    </incident>
+
+    <incident
+        id="DiscouragedApi"
+        severity="warning"
+        message="Fixed screen orientations will be ignored in most cases, starting from Android 16. Android is moving toward a model where apps are expected to adapt to various orientations, display sizes, and aspect ratios.">
+        <show-url
+            description="Show https://developer.android.com/adaptive-apps"
+            url="https://developer.android.com/adaptive-apps"/>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*manifest*0}"
+            line="35"
+            column="17"
+            startOffset="1718"
+            endLine="35"
+            endColumn="60"
+            endOffset="1761"/>
+    </incident>
+
+    <incident
+        id="UseRequiresApi"
+        severity="warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of `@TargetApi` to propagate the requirement to callers of `setFocusArea`">
+        <fix-replace
+            description="Replace with `@RequiresApi`"
+            robot="true"
+            independent="true"
+            oldPattern="(TargetApi)"
+            replacement="androidx.annotation.RequiresApi"
+            shortenNames="true"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+            line="174"
+            column="5"
+            startOffset="7281"
+            endLine="174"
+            endColumn="59"
+            endOffset="7335"/>
+    </incident>
+
+    <incident
+        id="UseRequiresApi"
+        severity="warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of `@TargetApi` to propagate the requirement to callers of `setMetering`">
+        <fix-replace
+            description="Replace with `@RequiresApi`"
+            robot="true"
+            independent="true"
+            oldPattern="(TargetApi)"
+            replacement="androidx.annotation.RequiresApi"
+            shortenNames="true"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+            line="186"
+            column="5"
+            startOffset="7841"
+            endLine="186"
+            endColumn="59"
+            endOffset="7895"/>
+    </incident>
+
+    <incident
+        id="UseRequiresApi"
+        severity="warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of `@TargetApi` to propagate the requirement to callers of `buildMiddleArea`">
+        <fix-replace
+            description="Replace with `@RequiresApi`"
+            robot="true"
+            independent="true"
+            oldPattern="(TargetApi)"
+            replacement="androidx.annotation.RequiresApi"
+            shortenNames="true"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+            line="198"
+            column="5"
+            startOffset="8408"
+            endLine="198"
+            endColumn="59"
+            endOffset="8462"/>
+    </incident>
+
+    <incident
+        id="UseRequiresApi"
+        severity="warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of `@TargetApi` to propagate the requirement to callers of `setVideoStabilization`">
+        <fix-replace
+            description="Replace with `@RequiresApi`"
+            robot="true"
+            independent="true"
+            oldPattern="(TargetApi)"
+            replacement="androidx.annotation.RequiresApi"
+            shortenNames="true"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+            line="204"
+            column="5"
+            startOffset="8689"
+            endLine="204"
+            endColumn="59"
+            endOffset="8743"/>
+    </incident>
+
+    <incident
+        id="UseRequiresApi"
+        severity="warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of `@TargetApi` to propagate the requirement to callers of `toString`">
+        <fix-replace
+            description="Replace with `@RequiresApi`"
+            robot="true"
+            independent="true"
+            oldPattern="(TargetApi)"
+            replacement="androidx.annotation.RequiresApi"
+            shortenNames="true"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java"
+            line="317"
+            column="5"
+            startOffset="13110"
+            endLine="317"
+            endColumn="59"
+            endOffset="13164"/>
+    </incident>
+
+    <incident
+        id="UseRequiresApi"
+        severity="warning"
+        message="Use `@RequiresApi(14) instead of `@TargetApi` to propagate the requirement to callers of `surfaceTextureListener`">
+        <fix-replace
+            description="Replace with `@RequiresApi`"
+            robot="true"
+            independent="true"
+            oldPattern="(TargetApi)"
+            replacement="androidx.annotation.RequiresApi"
+            shortenNames="true"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/CameraPreview.java"
+            line="146"
+            column="5"
+            startOffset="4741"
+            endLine="146"
+            endColumn="19"
+            endOffset="4755"/>
+    </incident>
+
+    <incident
+        id="UseRequiresApi"
+        severity="warning"
+        message="Use `@RequiresApi(23) instead of `@TargetApi` to propagate the requirement to callers of `openCameraWithPermission`">
+        <fix-replace
+            description="Replace with `@RequiresApi`"
+            robot="true"
+            independent="true"
+            oldPattern="(TargetApi)"
+            replacement="androidx.annotation.RequiresApi"
+            shortenNames="true"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/journeyapps/barcodescanner/CaptureManager.java"
+            line="239"
+            column="5"
+            startOffset="8258"
+            endLine="239"
+            endColumn="19"
+            endOffset="8272"/>
+    </incident>
+
+    <incident
+        id="UseRequiresApi"
+        severity="warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.HONEYCOMB) instead of `@TargetApi` to propagate the requirement to callers of `forFragment`">
+        <fix-replace
+            description="Replace with `@RequiresApi`"
+            robot="true"
+            independent="true"
+            oldPattern="(TargetApi)"
+            replacement="androidx.annotation.RequiresApi"
+            shortenNames="true"
+            priority="0"/>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/google/zxing/integration/android/IntentIntegrator.java"
+            line="151"
+            column="5"
+            startOffset="4962"
+            endLine="151"
+            endColumn="46"
+            endOffset="5003"/>
     </incident>
 
 </incidents>

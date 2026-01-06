@@ -7,4 +7,7 @@
     <string name="error">Error</string>
     <string name="app_name">My App Name</string>
     <string name="select_photo">Select Photo</string>
+    <string name="error_generic">Unexpected error</string>
+    <string name="retry">Retry</string>
+    <string name="close">Close</string>
 </resources>

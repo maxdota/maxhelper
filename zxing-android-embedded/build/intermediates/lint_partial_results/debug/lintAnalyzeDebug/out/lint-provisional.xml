@@ -1,36 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<incidents format="6" by="lint 8.4.2" type="conditional_incidents">
+<incidents format="6" by="lint 8.12.3" type="conditional_incidents">
 
     <incident
         id="ObsoleteSdkInt"
         severity="warning"
-        message="Unnecessary; SDK_INT is always >= 11">
-        <fix-replace
-            description="Delete @TargetApi"
-            replacement=""
-            priority="0">
-            <range
-                file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/google/zxing/integration/android/IntentIntegrator.java"
-                startOffset="4962"
-                endOffset="5003"/>
-        </fix-replace>
-        <location
-            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/google/zxing/integration/android/IntentIntegrator.java"
-            line="151"
-            column="5"
-            startOffset="4962"
-            endLine="151"
-            endColumn="46"
-            endOffset="5003"/>
-        <map>
-            <condition minGE="fffffffffffffc00"/>
-        </map>
-    </incident>
-
-    <incident
-        id="ObsoleteSdkInt"
-        severity="warning"
-        message="Unnecessary; SDK_INT is always >= 15">
+        message="Unnecessary; `SDK_INT` is always >= 15">
         <fix-replace
             description="Delete @TargetApi"
             replacement=""
@@ -49,14 +23,14 @@
             endColumn="59"
             endOffset="7335"/>
         <map>
-            <condition minGE="ffffffffffffc000"/>
+            <condition minGE="15-∞"/>
         </map>
     </incident>
 
     <incident
         id="ObsoleteSdkInt"
         severity="warning"
-        message="Unnecessary; SDK_INT is always >= 15">
+        message="Unnecessary; `SDK_INT` is always >= 15">
         <fix-replace
             description="Delete @TargetApi"
             replacement=""
@@ -75,14 +49,14 @@
             endColumn="59"
             endOffset="7895"/>
         <map>
-            <condition minGE="ffffffffffffc000"/>
+            <condition minGE="15-∞"/>
         </map>
     </incident>
 
     <incident
         id="ObsoleteSdkInt"
         severity="warning"
-        message="Unnecessary; SDK_INT is always >= 15">
+        message="Unnecessary; `SDK_INT` is always >= 15">
         <fix-replace
             description="Delete @TargetApi"
             replacement=""
@@ -101,14 +75,14 @@
             endColumn="59"
             endOffset="8462"/>
         <map>
-            <condition minGE="ffffffffffffc000"/>
+            <condition minGE="15-∞"/>
         </map>
     </incident>
 
     <incident
         id="ObsoleteSdkInt"
         severity="warning"
-        message="Unnecessary; SDK_INT is always >= 15">
+        message="Unnecessary; `SDK_INT` is always >= 15">
         <fix-replace
             description="Delete @TargetApi"
             replacement=""
@@ -127,14 +101,14 @@
             endColumn="59"
             endOffset="8743"/>
         <map>
-            <condition minGE="ffffffffffffc000"/>
+            <condition minGE="15-∞"/>
         </map>
     </incident>
 
     <incident
         id="ObsoleteSdkInt"
         severity="warning"
-        message="Unnecessary; SDK_INT is always >= 15">
+        message="Unnecessary; `SDK_INT` is always >= 15">
         <fix-replace
             description="Delete @TargetApi"
             replacement=""
@@ -153,14 +127,14 @@
             endColumn="59"
             endOffset="13164"/>
         <map>
-            <condition minGE="ffffffffffffc000"/>
+            <condition minGE="15-∞"/>
         </map>
     </incident>
 
     <incident
         id="ObsoleteSdkInt"
         severity="warning"
-        message="Unnecessary; SDK_INT is always >= 14">
+        message="Unnecessary; `SDK_INT` is always >= 14">
         <fix-replace
             description="Delete @TargetApi"
             replacement=""
@@ -179,14 +153,14 @@
             endColumn="19"
             endOffset="4755"/>
         <map>
-            <condition minGE="ffffffffffffe000"/>
+            <condition minGE="14-∞"/>
         </map>
     </incident>
 
     <incident
         id="ObsoleteSdkInt"
         severity="warning"
-        message="Unnecessary; SDK_INT is always >= 23">
+        message="Unnecessary; `SDK_INT` is always >= 23">
         <fix-replace
             description="Delete @TargetApi"
             replacement=""
@@ -205,7 +179,33 @@
             endColumn="19"
             endOffset="8272"/>
         <map>
-            <condition minGE="ffffffffffc00000"/>
+            <condition minGE="23-∞"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; `SDK_INT` is always >= 11">
+        <fix-replace
+            description="Delete @TargetApi"
+            replacement=""
+            priority="0">
+            <range
+                file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/google/zxing/integration/android/IntentIntegrator.java"
+                startOffset="4962"
+                endOffset="5003"/>
+        </fix-replace>
+        <location
+            file="${:zxing-android-embedded*debug*MAIN*sourceProvider*0*javaDir*0}/com/google/zxing/integration/android/IntentIntegrator.java"
+            line="151"
+            column="5"
+            startOffset="4962"
+            endLine="151"
+            endColumn="46"
+            endOffset="5003"/>
+        <map>
+            <condition minGE="11-∞"/>
         </map>
     </incident>
 

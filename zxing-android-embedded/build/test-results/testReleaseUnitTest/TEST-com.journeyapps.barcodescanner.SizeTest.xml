@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.journeyapps.barcodescanner.SizeTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2025-04-10T21:40:02" hostname="LAPTOP-590M04PF" time="0.004">
+<testsuite name="com.journeyapps.barcodescanner.SizeTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-01-06T21:40:44.126Z" hostname="LAPTOP-590M04PF" time="0.007">
   <properties/>
-  <testcase name="testScaleCrop" classname="com.journeyapps.barcodescanner.SizeTest" time="0.002"/>
+  <testcase name="testScaleCrop" classname="com.journeyapps.barcodescanner.SizeTest" time="0.004"/>
   <testcase name="testScale" classname="com.journeyapps.barcodescanner.SizeTest" time="0.0"/>
   <testcase name="testScaleFit" classname="com.journeyapps.barcodescanner.SizeTest" time="0.0"/>
   <testcase name="testCompare" classname="com.journeyapps.barcodescanner.SizeTest" time="0.0"/>

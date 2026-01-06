@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.journeyapps.barcodescanner.camera.FitXYStrategyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-04-10T21:40:01" hostname="LAPTOP-590M04PF" time="0.0">
+<testsuite name="com.journeyapps.barcodescanner.camera.FitXYStrategyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-01-06T21:40:42.161Z" hostname="LAPTOP-590M04PF" time="0.001">
   <properties/>
-  <testcase name="testOrdering" classname="com.journeyapps.barcodescanner.camera.FitXYStrategyTest" time="0.0"/>
+  <testcase name="testOrdering" classname="com.journeyapps.barcodescanner.camera.FitXYStrategyTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

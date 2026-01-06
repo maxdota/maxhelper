@@ -6,8 +6,17 @@
 
     <color name="table_dark_background">#d2d3d4</color>
     <color name="selected_background">#a1a1a1</color>
-    <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black_1">#111111</color>
+    <color name="black_2">#222222</color>
+    <color name="black_3">#333333</color>
+    <color name="gray">#888888</color>
 
+    <color name="transparent">#00000000</color>
     <color name="overlay">#20000000</color>
+
+    <color name="header1_text">#DEDEDE</color>
+    <color name="default_text">#CDCDCD</color>
+    <color name="hint_text">#888888</color>
 </resources>

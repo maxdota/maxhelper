@@ -177,9 +177,9 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 14 warnings</span>
+      <span class="mdl-layout-title">Lint Report: 25 warnings</span>
       <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Fri Apr 11 04:43:52 ICT 2025 by AGP (8.4.2)</nav>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Wed Jan 07 04:40:51 ICT 2026 by AGP (8.12.3)</nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -188,7 +188,9 @@ document.getElementById(id).style.display = 'none';
       <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
       <a class="mdl-navigation__link" href="#CustomViewStyleable"><i class="material-icons warning-icon">warning</i>Mismatched Styleable/Custom View Name (3)</a>
       <a class="mdl-navigation__link" href="#GradleDependency"><i class="material-icons warning-icon">warning</i>Obsolete Gradle Dependency (3)</a>
+      <a class="mdl-navigation__link" href="#NewerVersionAvailable"><i class="material-icons warning-icon">warning</i>Newer Library Versions Available (3)</a>
       <a class="mdl-navigation__link" href="#DiscouragedApi"><i class="material-icons warning-icon">warning</i>Using discouraged APIs (1)</a>
+      <a class="mdl-navigation__link" href="#UseRequiresApi"><i class="material-icons warning-icon">warning</i>Use <code>@RequiresApi</code> instead of <code>@TargetApi</code> (8)</a>
       <a class="mdl-navigation__link" href="#ObsoleteSdkInt"><i class="material-icons warning-icon">warning</i>Obsolete SDK_INT Version Check (7)</a>
     </nav>
   </div>
@@ -211,8 +213,14 @@ document.getElementById(id).style.display = 'none';
 <td class="countColumn">3</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#GradleDependency">GradleDependency</a>: Obsolete Gradle Dependency</td></tr>
 <tr>
+<td class="countColumn">3</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#NewerVersionAvailable">NewerVersionAvailable</a>: Newer Library Versions Available</td></tr>
+<tr>
 <td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#DiscouragedApi">DiscouragedApi</a>: Using discouraged APIs</td></tr>
+<tr>
+<td class="countColumn">8</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
+<a href="#UseRequiresApi">UseRequiresApi</a>: Use <code>@RequiresApi</code> instead of <code>@TargetApi</code></td></tr>
 <tr><td class="countColumn"></td><td class="categoryColumn"><a href="#Performance">Performance</a>
 </td></tr>
 <tr>
@@ -220,7 +228,7 @@ document.getElementById(id).style.display = 'none';
 <a href="#ObsoleteSdkInt">ObsoleteSdkInt</a>: Obsolete SDK_INT Version Check</td></tr>
 <tr><td></td><td class="categoryColumn"><a href="#ExtraIssues">Included Additional Checks (11)</a>
 </td></tr>
-<tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (40)</a>
+<tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (41)</a>
 </td></tr>
 </table>
 <br/>              </div>
@@ -306,7 +314,16 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:8</span>: <span class="message">A newer version of androidx.fragment:fragment than 1.3.6 is available: 1.8.6</span><br /><pre class="errorlines">
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:7</span>: <span class="message">A newer version of androidx.core:core than 1.16.0 is available: 1.17.0</span><br /><pre class="errorlines">
+<span class="lineno">  4 </span>dependencies {
+<span class="lineno">  5 </span>    api <span class="string">'com.google.zxing:core:3.4.1'</span>
+<span class="lineno">  6 </span>
+<span class="caretline"><span class="lineno">  7 </span>    implementation <span class="warning"><span class="string">'androidx.core:core:1.16.0'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno">  8 </span>    implementation <span class="string">'androidx.fragment:fragment:1.3.6'</span>
+<span class="lineno">  9 </span>
+<span class="lineno"> 10 </span>    testImplementation <span class="string">'junit:junit:4.13.1'</span></pre>
+
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:8</span>: <span class="message">A newer version of androidx.fragment:fragment than 1.3.6 is available: 1.8.9</span><br /><pre class="errorlines">
 <span class="lineno">  5 </span>    api <span class="string">'com.google.zxing:core:3.4.1'</span>
 <span class="lineno">  6 </span>
 <span class="lineno">  7 </span>    implementation <span class="string">'androidx.core:core:1.16.0'</span>
@@ -315,23 +332,14 @@ Dismiss</button>            </div>
 <span class="lineno"> 10 </span>    testImplementation <span class="string">'junit:junit:4.13.1'</span>
 <span class="lineno"> 11 </span>    testImplementation <span class="string">'org.mockito:mockito-core:1.9.5'</span></pre>
 
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:10</span>: <span class="message">A newer version of junit:junit than 4.13.1 is available: 4.13.2</span><br /><pre class="errorlines">
-<span class="lineno">  7 </span>    implementation <span class="string">'androidx.core:core:1.16.0'</span>
-<span class="lineno">  8 </span>    implementation <span class="string">'androidx.fragment:fragment:1.3.6'</span>
-<span class="lineno">  9 </span>
-<span class="caretline"><span class="lineno"> 10 </span>    testImplementation <span class="warning"><span class="string">'junit:junit:4.13.1'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 11 </span>    testImplementation <span class="string">'org.mockito:mockito-core:1.9.5'</span>
-<span class="lineno"> 12 </span>}
-</pre>
-
-<span class="location"><a href="../../build.gradle">../../build.gradle</a>:11</span>: <span class="message">A newer version of org.mockito:mockito-core than 1.9.5 is available: 5.15.2</span><br /><pre class="errorlines">
-<span class="lineno">  8 </span>    implementation <span class="string">'androidx.fragment:fragment:1.3.6'</span>
-<span class="lineno">  9 </span>
-<span class="lineno"> 10 </span>    testImplementation <span class="string">'junit:junit:4.13.1'</span>
-<span class="caretline"><span class="lineno"> 11 </span>    testImplementation <span class="warning"><span class="string">'org.mockito:mockito-core:1.9.5'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<span class="lineno"> 12 </span>}
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:16</span>: <span class="message">A newer version of <code>compileSdkVersion</code> than 34 is available: 36</span><br /><pre class="errorlines">
 <span class="lineno"> 13 </span>
 <span class="lineno"> 14 </span>android {
+<span class="lineno"> 15 </span>    resourcePrefix <span class="string">'zxing_'</span>
+<span class="caretline"><span class="lineno"> 16 </span>    <span class="warning">compileSdkVersion <span class="number">34</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 17 </span>    namespace = <span class="string">"com.google.zxing.client.android"</span>
+<span class="lineno"> 18 </span>
+<span class="lineno"> 19 </span>    sourceSets {
 </pre>
 
 </div>
@@ -361,6 +369,70 @@ To suppress this error, use the issue id "GradleDependency" as explained in the 
 Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="GradleDependencyCardLink" onclick="hideid('GradleDependencyCard');">
 Dismiss</button>            </div>
             </div>
+          </section><a name="NewerVersionAvailable"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="NewerVersionAvailableCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Newer Library Versions Available</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:5</span>: <span class="message">A newer version of com.google.zxing:core than 3.4.1 is available: 3.5.4</span><br /><pre class="errorlines">
+<span class="lineno">  2 </span>apply from: <span class="string">"$rootDir/gradle-mvn-push-zxing-android-embedded.gradle"</span>
+<span class="lineno">  3 </span>
+<span class="lineno">  4 </span>dependencies {
+<span class="caretline"><span class="lineno">  5 </span>    api <span class="warning"><span class="string">'com.google.zxing:core:3.4.1'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno">  6 </span>
+<span class="lineno">  7 </span>    implementation <span class="string">'androidx.core:core:1.16.0'</span>
+<span class="lineno">  8 </span>    implementation <span class="string">'androidx.fragment:fragment:1.3.6'</span></pre>
+
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:10</span>: <span class="message">A newer version of junit:junit than 4.13.1 is available: 4.13.2</span><br /><pre class="errorlines">
+<span class="lineno">  7 </span>    implementation <span class="string">'androidx.core:core:1.16.0'</span>
+<span class="lineno">  8 </span>    implementation <span class="string">'androidx.fragment:fragment:1.3.6'</span>
+<span class="lineno">  9 </span>
+<span class="caretline"><span class="lineno"> 10 </span>    testImplementation <span class="warning"><span class="string">'junit:junit:4.13.1'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 11 </span>    testImplementation <span class="string">'org.mockito:mockito-core:1.9.5'</span>
+<span class="lineno"> 12 </span>}
+</pre>
+
+<span class="location"><a href="../../build.gradle">../../build.gradle</a>:11</span>: <span class="message">A newer version of org.mockito:mockito-core than 1.9.5 is available: 5.21.0</span><br /><pre class="errorlines">
+<span class="lineno">  8 </span>    implementation <span class="string">'androidx.fragment:fragment:1.3.6'</span>
+<span class="lineno">  9 </span>
+<span class="lineno"> 10 </span>    testImplementation <span class="string">'junit:junit:4.13.1'</span>
+<span class="caretline"><span class="lineno"> 11 </span>    testImplementation <span class="warning"><span class="string">'org.mockito:mockito-core:1.9.5'</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 12 </span>}
+<span class="lineno"> 13 </span>
+<span class="lineno"> 14 </span>android {
+</pre>
+
+</div>
+<div class="metadata"><div class="explanation" id="explanationNewerVersionAvailable" style="display: none;">
+This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the <code>GradleDependency</code> check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also <b>much</b> slower.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
+To suppress this error, use the issue id "NewerVersionAvailable" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">NewerVersionAvailable</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Correctness</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 4/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationNewerVersionAvailableLink" onclick="reveal('explanationNewerVersionAvailable');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="NewerVersionAvailableCardLink" onclick="hideid('NewerVersionAvailableCard');">
+Dismiss</button>            </div>
+            </div>
           </section><a name="DiscouragedApi"></a>
 <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="DiscouragedApiCard" style="display: block;">
             <div class="mdl-card mdl-cell mdl-cell--12-col">
@@ -370,7 +442,7 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../AndroidManifest.xml">../../AndroidManifest.xml</a>:35</span>: <span class="message">Should not restrict activity to fixed orientation. This may not be suitable for different form factors, causing the app to be letterboxed.</span><br /><pre class="errorlines">
+<span class="location"><a href="../../AndroidManifest.xml">../../AndroidManifest.xml</a>:35</span>: <span class="message">Fixed screen orientations will be ignored in most cases, starting from Android 16. Android is moving toward a model where apps are expected to adapt to various orientations, display sizes, and aspect ratios.</span><br /><pre class="errorlines">
 <span class="lineno"> 32 </span>  <span class="tag">&lt;application></span>
 <span class="lineno"> 33 </span>      <span class="tag">&lt;activity</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"com.journeyapps.barcodescanner.CaptureActivity"</span>
 <span class="lineno"> 34 </span>                <span class="prefix">android:</span><span class="attribute">clearTaskOnLaunch</span>=<span class="value">"true"</span>
@@ -406,6 +478,123 @@ Discouraged APIs are allowed and are not deprecated, but they may be unfit for c
 Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="DiscouragedApiCardLink" onclick="hideid('DiscouragedApiCard');">
 Dismiss</button>            </div>
             </div>
+          </section><a name="UseRequiresApi"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="UseRequiresApiCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Use @RequiresApi instead of @TargetApi</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:174</span>: <span class="message">Use <code>@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of </code>@TargetApi` to propagate the requirement to callers of <code>setFocusArea</code></span><br /><pre class="errorlines">
+<span class="lineno"> 171 </span>        }
+<span class="lineno"> 172 </span>    }
+<span class="lineno"> 173 </span>
+<span class="caretline"><span class="lineno"> 174 </span>    <span class="warning"><span class="annotation">@TargetApi</span>(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 175 </span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> setFocusArea(Camera.Parameters parameters) {
+<span class="lineno"> 176 </span>        <span class="keyword">if</span> (parameters.getMaxNumFocusAreas() > <span class="number">0</span>) {
+<span class="lineno"> 177 </span>            Log.i(TAG, <span class="string">"Old focus areas: "</span> + toString(parameters.getFocusAreas()));
+</pre>
+
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:186</span>: <span class="message">Use <code>@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of </code>@TargetApi` to propagate the requirement to callers of <code>setMetering</code></span><br /><pre class="errorlines">
+<span class="lineno"> 183 </span>        }
+<span class="lineno"> 184 </span>    }
+<span class="lineno"> 185 </span>
+<span class="caretline"><span class="lineno"> 186 </span>    <span class="warning"><span class="annotation">@TargetApi</span>(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 187 </span>    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> setMetering(Camera.Parameters parameters) {
+<span class="lineno"> 188 </span>        <span class="keyword">if</span> (parameters.getMaxNumMeteringAreas() > <span class="number">0</span>) {
+<span class="lineno"> 189 </span>            Log.i(TAG, <span class="string">"Old metering areas: "</span> + parameters.getMeteringAreas());
+</pre>
+
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:198</span>: <span class="message">Use <code>@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of </code>@TargetApi` to propagate the requirement to callers of <code>buildMiddleArea</code></span><br /><pre class="errorlines">
+<span class="lineno"> 195 </span>      }
+<span class="lineno"> 196 </span>  }
+<span class="lineno"> 197 </span>
+<span class="caretline"><span class="lineno"> 198 </span>  <span class="warning"><span class="annotation">@TargetApi</span>(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 199 </span>  <span class="keyword">private</span> <span class="keyword">static</span> List&lt;Camera.Area> buildMiddleArea(<span class="keyword">int</span> areaPer1000) {
+<span class="lineno"> 200 </span>      <span class="keyword">return</span> Collections.singletonList(
+<span class="lineno"> 201 </span>              <span class="keyword">new</span> Camera.Area(<span class="keyword">new</span> Rect(-areaPer1000, -areaPer1000, areaPer1000, areaPer1000), <span class="number">1</span>));
+</pre>
+
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:204</span>: <span class="message">Use <code>@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of </code>@TargetApi` to propagate the requirement to callers of <code>setVideoStabilization</code></span><br /><pre class="errorlines">
+<span class="lineno"> 201 </span>              <span class="keyword">new</span> Camera.Area(<span class="keyword">new</span> Rect(-areaPer1000, -areaPer1000, areaPer1000, areaPer1000), <span class="number">1</span>));
+<span class="lineno"> 202 </span>  }
+<span class="lineno"> 203 </span>
+<span class="caretline"><span class="lineno"> 204 </span>  <span class="warning"><span class="annotation">@TargetApi</span>(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 205 </span>  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> setVideoStabilization(Camera.Parameters parameters) {
+<span class="lineno"> 206 </span>      <span class="keyword">if</span> (parameters.isVideoStabilizationSupported()) {
+<span class="lineno"> 207 </span>          <span class="keyword">if</span> (parameters.getVideoStabilization()) {
+</pre>
+
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:317</span>: <span class="message">Use <code>@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of </code>@TargetApi` to propagate the requirement to callers of <code>toString</code></span><br /><pre class="errorlines">
+<span class="lineno"> 314 </span>        <span class="keyword">return</span> buffer.toString();
+<span class="lineno"> 315 </span>    }
+<span class="lineno"> 316 </span>
+<span class="caretline"><span class="lineno"> 317 </span>    <span class="warning"><span class="annotation">@TargetApi</span>(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 318 </span>    <span class="keyword">private</span> <span class="keyword">static</span> String toString(Iterable&lt;Camera.Area> areas) {
+<span class="lineno"> 319 </span>        <span class="keyword">if</span> (areas == <span class="keyword">null</span>) {
+<span class="lineno"> 320 </span>            <span class="keyword">return</span> <span class="keyword">null</span>;
+</pre>
+
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/CameraPreview.java">../../src/com/journeyapps/barcodescanner/CameraPreview.java</a>:146</span>: <span class="message">Use <code>@RequiresApi(14) instead of </code>@TargetApi` to propagate the requirement to callers of <code>surfaceTextureListener</code></span><br /><pre class="errorlines">
+<span class="lineno"> 143 </span>
+<span class="lineno"> 144 </span>    <span class="keyword">private</span> <span class="keyword">boolean</span> torchOn = <span class="keyword">false</span>;
+<span class="lineno"> 145 </span>
+<span class="caretline"><span class="lineno"> 146 </span>    <span class="warning"><span class="annotation">@TargetApi</span>(<span class="number">14</span>)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 147 </span>    <span class="keyword">private</span> TextureView.SurfaceTextureListener surfaceTextureListener() {
+<span class="lineno"> 148 </span>        <span class="comment">// Cannot initialize automatically, since we may be API &lt; 14</span>
+<span class="lineno"> 149 </span>        <span class="keyword">return</span> <span class="keyword">new</span> TextureView.SurfaceTextureListener() {
+</pre>
+
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/CaptureManager.java">../../src/com/journeyapps/barcodescanner/CaptureManager.java</a>:239</span>: <span class="message">Use <code>@RequiresApi(23) instead of </code>@TargetApi` to propagate the requirement to callers of <code>openCameraWithPermission</code></span><br /><pre class="errorlines">
+<span class="lineno"> 236 </span>
+<span class="lineno"> 237 </span>    <span class="keyword">private</span> <span class="keyword">boolean</span> askedPermission = <span class="keyword">false</span>;
+<span class="lineno"> 238 </span>
+<span class="caretline"><span class="lineno"> 239 </span>    <span class="warning"><span class="annotation">@TargetApi</span>(<span class="number">23</span>)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 240 </span>    <span class="keyword">private</span> <span class="keyword">void</span> openCameraWithPermission() {
+<span class="lineno"> 241 </span>        <span class="keyword">if</span> (ContextCompat.checkSelfPermission(<span class="keyword">this</span>.activity, Manifest.permission.CAMERA)
+<span class="lineno"> 242 </span>                == PackageManager.PERMISSION_GRANTED) {
+</pre>
+
+<span class="location"><a href="../../src/com/google/zxing/integration/android/IntentIntegrator.java">../../src/com/google/zxing/integration/android/IntentIntegrator.java</a>:151</span>: <span class="message">Use <code>@RequiresApi(Build.VERSION_CODES.HONEYCOMB) instead of </code>@TargetApi` to propagate the requirement to callers of <code>forFragment</code></span><br /><pre class="errorlines">
+<span class="lineno"> 148 </span><span class="javadoc">   *                 {@link #startActivityForResult(Intent, int)} will be called on the {@link Fragment} instead
+</span><span class="lineno"> 149 </span><span class="javadoc">   *                 of an {@link Activity}
+</span><span class="lineno"> 150 </span><span class="javadoc">   */</span>
+<span class="caretline"><span class="lineno"> 151 </span>  <span class="warning"><span class="annotation">@TargetApi</span>(Build.VERSION_CODES.HONEYCOMB)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="lineno"> 152 </span>  <span class="keyword">public</span> <span class="keyword">static</span> IntentIntegrator forFragment(Fragment fragment) {
+<span class="lineno"> 153 </span>      IntentIntegrator integrator = <span class="keyword">new</span> IntentIntegrator(fragment.getActivity());
+<span class="lineno"> 154 </span>      integrator.fragment = fragment;
+</pre>
+
+</div>
+<div class="metadata"><div class="explanation" id="explanationUseRequiresApi" style="display: none;">
+The <code>@TargetApi</code> annotation only <i>suppresses</i> API warnings locally. <code>@RequiresApi</code> on the other hand will propagate the requirement out to any <i>callers</i> of this API, making sure that they either perform API level checks (using for example <code>SDK_INT</code>), or defining <code>@RequiresApi</code> annotations themselves.<br/>
+<br/>
+(The <code>@TargetApi</code> annotation predates <code>@RequiresApi</code>, and was introduced as an early way to <i>suppress</i> lint API warnings for a particular API level. Accidentally using <code>@TargetApi</code> can lead to crashes since there is no check that other calls to this method actually check that the call is safe.)<br/>To suppress this error, use the issue id "UseRequiresApi" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">UseRequiresApi</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Correctness</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Warning</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 2/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationUseRequiresApiLink" onclick="reveal('explanationUseRequiresApi');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="UseRequiresApiCardLink" onclick="hideid('UseRequiresApiCard');">
+Dismiss</button>            </div>
+            </div>
           </section>
 <a name="Performance"></a>
 <a name="ObsoleteSdkInt"></a>
@@ -417,7 +606,7 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:174</span>: <span class="message">Unnecessary; SDK_INT is always >= 15</span><br /><pre class="errorlines">
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:174</span>: <span class="message">Unnecessary; <code>SDK_INT</code> is always >= 15</span><br /><pre class="errorlines">
 <span class="lineno"> 171 </span>        }
 <span class="lineno"> 172 </span>    }
 <span class="lineno"> 173 </span>
@@ -427,7 +616,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 177 </span>            Log.i(TAG, <span class="string">"Old focus areas: "</span> + toString(parameters.getFocusAreas()));
 </pre>
 
-<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:186</span>: <span class="message">Unnecessary; SDK_INT is always >= 15</span><br /><pre class="errorlines">
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:186</span>: <span class="message">Unnecessary; <code>SDK_INT</code> is always >= 15</span><br /><pre class="errorlines">
 <span class="lineno"> 183 </span>        }
 <span class="lineno"> 184 </span>    }
 <span class="lineno"> 185 </span>
@@ -437,7 +626,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 189 </span>            Log.i(TAG, <span class="string">"Old metering areas: "</span> + parameters.getMeteringAreas());
 </pre>
 
-<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:198</span>: <span class="message">Unnecessary; SDK_INT is always >= 15</span><br /><pre class="errorlines">
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:198</span>: <span class="message">Unnecessary; <code>SDK_INT</code> is always >= 15</span><br /><pre class="errorlines">
 <span class="lineno"> 195 </span>      }
 <span class="lineno"> 196 </span>  }
 <span class="lineno"> 197 </span>
@@ -447,7 +636,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 201 </span>              <span class="keyword">new</span> Camera.Area(<span class="keyword">new</span> Rect(-areaPer1000, -areaPer1000, areaPer1000, areaPer1000), <span class="number">1</span>));
 </pre>
 
-<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:204</span>: <span class="message">Unnecessary; SDK_INT is always >= 15</span><br /><pre class="errorlines">
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:204</span>: <span class="message">Unnecessary; <code>SDK_INT</code> is always >= 15</span><br /><pre class="errorlines">
 <span class="lineno"> 201 </span>              <span class="keyword">new</span> Camera.Area(<span class="keyword">new</span> Rect(-areaPer1000, -areaPer1000, areaPer1000, areaPer1000), <span class="number">1</span>));
 <span class="lineno"> 202 </span>  }
 <span class="lineno"> 203 </span>
@@ -457,7 +646,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 207 </span>          <span class="keyword">if</span> (parameters.getVideoStabilization()) {
 </pre>
 
-<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:317</span>: <span class="message">Unnecessary; SDK_INT is always >= 15</span><br /><pre class="errorlines">
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java">../../src/com/journeyapps/barcodescanner/camera/CameraConfigurationUtils.java</a>:317</span>: <span class="message">Unnecessary; <code>SDK_INT</code> is always >= 15</span><br /><pre class="errorlines">
 <span class="lineno"> 314 </span>        <span class="keyword">return</span> buffer.toString();
 <span class="lineno"> 315 </span>    }
 <span class="lineno"> 316 </span>
@@ -467,7 +656,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 320 </span>            <span class="keyword">return</span> <span class="keyword">null</span>;
 </pre>
 
-<span class="location"><a href="../../src/com/journeyapps/barcodescanner/CameraPreview.java">../../src/com/journeyapps/barcodescanner/CameraPreview.java</a>:146</span>: <span class="message">Unnecessary; SDK_INT is always >= 14</span><br /><pre class="errorlines">
+<span class="location"><a href="../../src/com/journeyapps/barcodescanner/CameraPreview.java">../../src/com/journeyapps/barcodescanner/CameraPreview.java</a>:146</span>: <span class="message">Unnecessary; <code>SDK_INT</code> is always >= 14</span><br /><pre class="errorlines">
 <span class="lineno"> 143 </span>
 <span class="lineno"> 144 </span>    <span class="keyword">private</span> <span class="keyword">boolean</span> torchOn = <span class="keyword">false</span>;
 <span class="lineno"> 145 </span>
@@ -477,7 +666,7 @@ Dismiss</button>            </div>
 <span class="lineno"> 149 </span>        <span class="keyword">return</span> <span class="keyword">new</span> TextureView.SurfaceTextureListener() {
 </pre>
 
-<span class="location"><a href="../../src/com/google/zxing/integration/android/IntentIntegrator.java">../../src/com/google/zxing/integration/android/IntentIntegrator.java</a>:151</span>: <span class="message">Unnecessary; SDK_INT is always >= 11</span><br /><pre class="errorlines">
+<span class="location"><a href="../../src/com/google/zxing/integration/android/IntentIntegrator.java">../../src/com/google/zxing/integration/android/IntentIntegrator.java</a>:151</span>: <span class="message">Unnecessary; <code>SDK_INT</code> is always >= 11</span><br /><pre class="errorlines">
 <span class="lineno"> 148 </span><span class="javadoc">   *                 {@link #startActivityForResult(Intent, int)} will be called on the {@link Fragment} instead
 </span><span class="lineno"> 149 </span><span class="javadoc">   *                 of an {@link Activity}
 </span><span class="lineno"> 150 </span><span class="javadoc">   */</span>
@@ -876,16 +1065,6 @@ There are predefined sizes (for each density) for launcher icons. You should fol
 </div>
 </div>
 <div class="issue">
-<div class="id">ImplicitSamInstance<div class="issueSeparator"></div>
-</div>
-<div class="metadata">Disabled By: Default<br/>
-<div class="explanation">
-Kotlin's support for SAM (single accessor method) interfaces lets you pass a lambda to the interface. This will create a new instance on the fly even though there is no explicit constructor call. If you pass one of these lambdas or method references into a method which (for example) stores or compares the object identity, unexpected results may happen.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
-<br/>
-<br/></div>
-</div>
-</div>
-<div class="issue">
 <div class="id">InvalidPackage<div class="issueSeparator"></div>
 </div>
 <div class="metadata">Disabled By: Default<br/>
@@ -945,7 +1124,7 @@ To designate a unit test as the documentation example for an issue, name the tes
 </div>
 <div class="metadata">Disabled By: Default<br/>
 <div class="explanation">
-You should never compare two PSI elements for equality with <code>equals</code>; use <code>isEquivalentTo(PsiElement)</code> instead.<br/><br/>
+You should never compare two PSI elements for equality with <code>equals</code>; use <code>PsiEquivalenceUtil.areElementsEquivalent(PsiElement, PsiElement)</code> instead.<br/><br/>
 <br/></div>
 </div>
 </div>
@@ -997,6 +1176,15 @@ This detector looks for invalid line endings with repeated carriage return chara
 </div>
 </div>
 <div class="issue">
+<div class="id">MemberExtensionConflict<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+When both member and extension declarations are applicable, the resolution takes the member. This also implies that, if an extension existed first, but then a member is added later, the same call-site may end up with different call resolutions depending on target environment. This results in a potential runtime exception if the generated binary (library or app) targets earlier environment (i.e., without the new member, but only extension). More concrete example is found at: <a href="https://issuetracker.google.com/issues/350432371">https://issuetracker.google.com/issues/350432371</a><br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
 <div class="id">MinSdkTooLow<div class="issueSeparator"></div>
 </div>
 <div class="metadata">Disabled By: Default<br/>
@@ -1012,16 +1200,6 @@ The value of the <code>minSdkVersion</code> property is too low and can be incre
 <div class="metadata">Disabled By: Default<br/>
 <div class="explanation">
 Margin values should be positive. Negative values are generally a sign that you are making assumptions about views surrounding the current one, or may be tempted to turn off child clipping to allow a view to escape its parent. Turning off child clipping to do this not only leads to poor graphical performance, it also results in wrong touch event handling since touch events are based strictly on a chain of parent-rect hit tests. Finally, making assumptions about the size of strings can lead to localization problems.<br/><br/>
-<br/></div>
-</div>
-</div>
-<div class="issue">
-<div class="id">NewerVersionAvailable<div class="issueSeparator"></div>
-</div>
-<div class="metadata">Disabled By: Default<br/>
-<div class="explanation">
-This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the <code>GradleDependency</code> check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also <b>much</b> slower.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
-<br/>
 <br/></div>
 </div>
 </div>
@@ -1074,6 +1252,21 @@ To configure this option, use a `lint.xml` file in the project or source folder 
 Permissions should be prefixed with an app's package name, using reverse-domain-style naming. This prefix should be followed by <code>.permission.</code>, and then a description of the capability that the permission represents, in upper SNAKE_CASE. For example, <code>com.example.myapp.permission.ENGAGE_HYPERSPACE</code>.<br/>
 <br/>
 Following this recommendation avoids naming collisions, and helps clearly identify the owner and intention of a custom permission.<br/><br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">PrivacySandboxBlockedCall<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Many APIs are unavailable in the Privacy Sandbox, depending on the <code>targetSdk</code>.<br/>
+<br/>
+If your code is designed to run in the sandbox (and never outside the sandbox) then you should remove the blocked calls to avoid exceptions at runtime.<br/>
+<br/>
+If your code is part of a library that can be executed both inside and outside the sandbox, surround the code with <code>if (!Process.isSdkSandbox()) { ... }</code> (or use your own field or method annotated with <code>@ChecksRestrictedEnvironment</code>) to avoid executing blocked calls when in the sandbox. Or, add the <code>@RestrictedForEnvironment</code> annotation to the containing method if the entire method should not be called when in the sandbox.<br/>
+<br/>
+This check is disabled by default, and should only be enabled in modules that may execute in the Privacy Sandbox.<br/><br/>
 <br/></div>
 </div>
 </div>
@@ -1140,6 +1333,16 @@ Every call to <code>String.format</code> creates a new <code>Formatter</code> in
 <div class="explanation">
 A private inner class which is accessed from the outer class will force the compiler to insert a synthetic accessor; this means that you are causing extra overhead. This is not important in small projects, but is important for large apps running up against the 64K method handle limit, and especially for <b>libraries</b> where you want to make sure your library is as small as possible for the cases where your library is used in an app running up against the 64K limit.<br/>Note: This issue has an associated quickfix operation in Android Studio and IntelliJ IDEA.<br>
 <br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">ThreadConstraint<div class="issueSeparator"></div>
+</div>
+<div class="metadata">Disabled By: Default<br/>
+<div class="explanation">
+Ensures that a method which expects to be called on a specific thread, is actually called from that thread. For example, calls on methods in widgets should always be made on the UI thread.<br/><div class="moreinfo">More info: <a href="https://developer.android.com/guide/components/processes-and-threads.html#Threads">https://developer.android.com/guide/components/processes-and-threads.html#Threads</a>
+</div><br/>
 <br/></div>
 </div>
 </div>

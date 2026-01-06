@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.4.2">
+<issues format="6" by="lint 8.12.3">
 
     <issue
         id="CustomViewStyleable"
@@ -52,7 +52,23 @@
     <issue
         id="GradleDependency"
         severity="Warning"
-        message="A newer version of androidx.fragment:fragment than 1.3.6 is available: 1.8.6"
+        message="A newer version of androidx.core:core than 1.16.0 is available: 1.17.0"
+        category="Correctness"
+        priority="4"
+        summary="Obsolete Gradle Dependency"
+        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="    implementation &apos;androidx.core:core:1.16.0&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\build.gradle"
+            line="7"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        severity="Warning"
+        message="A newer version of androidx.fragment:fragment than 1.3.6 is available: 1.8.9"
         category="Correctness"
         priority="4"
         summary="Obsolete Gradle Dependency"
@@ -68,11 +84,43 @@
     <issue
         id="GradleDependency"
         severity="Warning"
-        message="A newer version of junit:junit than 4.13.1 is available: 4.13.2"
+        message="A newer version of `compileSdkVersion` than 34 is available: 36"
         category="Correctness"
         priority="4"
         summary="Obsolete Gradle Dependency"
         explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        errorLine1="    compileSdkVersion 34"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\build.gradle"
+            line="16"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        severity="Warning"
+        message="A newer version of com.google.zxing:core than 3.4.1 is available: 3.5.4"
+        category="Correctness"
+        priority="4"
+        summary="Newer Library Versions Available"
+        explanation="This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the `GradleDependency` check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also **much** slower."
+        errorLine1="    api &apos;com.google.zxing:core:3.4.1&apos;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\build.gradle"
+            line="5"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        severity="Warning"
+        message="A newer version of junit:junit than 4.13.1 is available: 4.13.2"
+        category="Correctness"
+        priority="4"
+        summary="Newer Library Versions Available"
+        explanation="This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the `GradleDependency` check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also **much** slower."
         errorLine1="    testImplementation &apos;junit:junit:4.13.1&apos;"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -82,13 +130,13 @@
     </issue>
 
     <issue
-        id="GradleDependency"
+        id="NewerVersionAvailable"
         severity="Warning"
-        message="A newer version of org.mockito:mockito-core than 1.9.5 is available: 5.15.2"
+        message="A newer version of org.mockito:mockito-core than 1.9.5 is available: 5.21.0"
         category="Correctness"
         priority="4"
-        summary="Obsolete Gradle Dependency"
-        explanation="This detector looks for usages of libraries where the version you are using is not the current stable release. Using older versions is fine, and there are cases where you deliberately want to stick with an older version. However, you may simply not be aware that a more recent version is available, and that is what this lint check helps find."
+        summary="Newer Library Versions Available"
+        explanation="This detector checks with a central repository to see if there are newer versions available for the dependencies used by this project. This is similar to the `GradleDependency` check, which checks for newer versions available in the Android SDK tools and libraries, but this works with any MavenCentral dependency, and connects to the library every time, which makes it more flexible but also **much** slower."
         errorLine1="    testImplementation &apos;org.mockito:mockito-core:1.9.5&apos;"
         errorLine2="                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -100,7 +148,7 @@
     <issue
         id="DiscouragedApi"
         severity="Warning"
-        message="Should not restrict activity to fixed orientation. This may not be suitable for different form factors, causing the app to be letterboxed."
+        message="Fixed screen orientations will be ignored in most cases, starting from Android 16. Android is moving toward a model where apps are expected to adapt to various orientations, display sizes, and aspect ratios."
         category="Correctness"
         priority="2"
         summary="Using discouraged APIs"
@@ -114,9 +162,137 @@
     </issue>
 
     <issue
+        id="UseRequiresApi"
+        severity="Warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of `@TargetApi` to propagate the requirement to callers of `setFocusArea`"
+        category="Correctness"
+        priority="2"
+        summary="Use `@RequiresApi` instead of `@TargetApi`"
+        explanation="The `@TargetApi` annotation only *suppresses* API warnings locally. `@RequiresApi` on the other hand will propagate the requirement out to any *callers* of this API, making sure that they either perform API level checks (using for example `SDK_INT`), or defining `@RequiresApi` annotations themselves.&#xA;&#xA;(The `@TargetApi` annotation predates `@RequiresApi`, and was introduced as an early way to *suppress* lint API warnings for a particular API level. Accidentally using `@TargetApi` can lead to crashes since there is no check that other calls to this method actually check that the call is safe.)"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\camera\CameraConfigurationUtils.java"
+            line="174"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UseRequiresApi"
+        severity="Warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of `@TargetApi` to propagate the requirement to callers of `setMetering`"
+        category="Correctness"
+        priority="2"
+        summary="Use `@RequiresApi` instead of `@TargetApi`"
+        explanation="The `@TargetApi` annotation only *suppresses* API warnings locally. `@RequiresApi` on the other hand will propagate the requirement out to any *callers* of this API, making sure that they either perform API level checks (using for example `SDK_INT`), or defining `@RequiresApi` annotations themselves.&#xA;&#xA;(The `@TargetApi` annotation predates `@RequiresApi`, and was introduced as an early way to *suppress* lint API warnings for a particular API level. Accidentally using `@TargetApi` can lead to crashes since there is no check that other calls to this method actually check that the call is safe.)"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\camera\CameraConfigurationUtils.java"
+            line="186"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UseRequiresApi"
+        severity="Warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of `@TargetApi` to propagate the requirement to callers of `buildMiddleArea`"
+        category="Correctness"
+        priority="2"
+        summary="Use `@RequiresApi` instead of `@TargetApi`"
+        explanation="The `@TargetApi` annotation only *suppresses* API warnings locally. `@RequiresApi` on the other hand will propagate the requirement out to any *callers* of this API, making sure that they either perform API level checks (using for example `SDK_INT`), or defining `@RequiresApi` annotations themselves.&#xA;&#xA;(The `@TargetApi` annotation predates `@RequiresApi`, and was introduced as an early way to *suppress* lint API warnings for a particular API level. Accidentally using `@TargetApi` can lead to crashes since there is no check that other calls to this method actually check that the call is safe.)"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\camera\CameraConfigurationUtils.java"
+            line="198"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UseRequiresApi"
+        severity="Warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of `@TargetApi` to propagate the requirement to callers of `setVideoStabilization`"
+        category="Correctness"
+        priority="2"
+        summary="Use `@RequiresApi` instead of `@TargetApi`"
+        explanation="The `@TargetApi` annotation only *suppresses* API warnings locally. `@RequiresApi` on the other hand will propagate the requirement out to any *callers* of this API, making sure that they either perform API level checks (using for example `SDK_INT`), or defining `@RequiresApi` annotations themselves.&#xA;&#xA;(The `@TargetApi` annotation predates `@RequiresApi`, and was introduced as an early way to *suppress* lint API warnings for a particular API level. Accidentally using `@TargetApi` can lead to crashes since there is no check that other calls to this method actually check that the call is safe.)"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\camera\CameraConfigurationUtils.java"
+            line="204"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UseRequiresApi"
+        severity="Warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) instead of `@TargetApi` to propagate the requirement to callers of `toString`"
+        category="Correctness"
+        priority="2"
+        summary="Use `@RequiresApi` instead of `@TargetApi`"
+        explanation="The `@TargetApi` annotation only *suppresses* API warnings locally. `@RequiresApi` on the other hand will propagate the requirement out to any *callers* of this API, making sure that they either perform API level checks (using for example `SDK_INT`), or defining `@RequiresApi` annotations themselves.&#xA;&#xA;(The `@TargetApi` annotation predates `@RequiresApi`, and was introduced as an early way to *suppress* lint API warnings for a particular API level. Accidentally using `@TargetApi` can lead to crashes since there is no check that other calls to this method actually check that the call is safe.)"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\camera\CameraConfigurationUtils.java"
+            line="317"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UseRequiresApi"
+        severity="Warning"
+        message="Use `@RequiresApi(14) instead of `@TargetApi` to propagate the requirement to callers of `surfaceTextureListener`"
+        category="Correctness"
+        priority="2"
+        summary="Use `@RequiresApi` instead of `@TargetApi`"
+        explanation="The `@TargetApi` annotation only *suppresses* API warnings locally. `@RequiresApi` on the other hand will propagate the requirement out to any *callers* of this API, making sure that they either perform API level checks (using for example `SDK_INT`), or defining `@RequiresApi` annotations themselves.&#xA;&#xA;(The `@TargetApi` annotation predates `@RequiresApi`, and was introduced as an early way to *suppress* lint API warnings for a particular API level. Accidentally using `@TargetApi` can lead to crashes since there is no check that other calls to this method actually check that the call is safe.)"
+        errorLine1="    @TargetApi(14)"
+        errorLine2="    ~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\CameraPreview.java"
+            line="146"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UseRequiresApi"
+        severity="Warning"
+        message="Use `@RequiresApi(23) instead of `@TargetApi` to propagate the requirement to callers of `openCameraWithPermission`"
+        category="Correctness"
+        priority="2"
+        summary="Use `@RequiresApi` instead of `@TargetApi`"
+        explanation="The `@TargetApi` annotation only *suppresses* API warnings locally. `@RequiresApi` on the other hand will propagate the requirement out to any *callers* of this API, making sure that they either perform API level checks (using for example `SDK_INT`), or defining `@RequiresApi` annotations themselves.&#xA;&#xA;(The `@TargetApi` annotation predates `@RequiresApi`, and was introduced as an early way to *suppress* lint API warnings for a particular API level. Accidentally using `@TargetApi` can lead to crashes since there is no check that other calls to this method actually check that the call is safe.)"
+        errorLine1="    @TargetApi(23)"
+        errorLine2="    ~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\src\com\journeyapps\barcodescanner\CaptureManager.java"
+            line="239"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="UseRequiresApi"
+        severity="Warning"
+        message="Use `@RequiresApi(Build.VERSION_CODES.HONEYCOMB) instead of `@TargetApi` to propagate the requirement to callers of `forFragment`"
+        category="Correctness"
+        priority="2"
+        summary="Use `@RequiresApi` instead of `@TargetApi`"
+        explanation="The `@TargetApi` annotation only *suppresses* API warnings locally. `@RequiresApi` on the other hand will propagate the requirement out to any *callers* of this API, making sure that they either perform API level checks (using for example `SDK_INT`), or defining `@RequiresApi` annotations themselves.&#xA;&#xA;(The `@TargetApi` annotation predates `@RequiresApi`, and was introduced as an early way to *suppress* lint API warnings for a particular API level. Accidentally using `@TargetApi` can lead to crashes since there is no check that other calls to this method actually check that the call is safe.)"
+        errorLine1="    @TargetApi(Build.VERSION_CODES.HONEYCOMB)"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="D:\code\maxhelper\zxing-android-embedded\src\com\google\zxing\integration\android\IntentIntegrator.java"
+            line="151"
+            column="5"/>
+    </issue>
+
+    <issue
         id="ObsoleteSdkInt"
         severity="Warning"
-        message="Unnecessary; SDK_INT is always >= 15"
+        message="Unnecessary; `SDK_INT` is always >= 15"
         category="Performance"
         priority="6"
         summary="Obsolete SDK_INT Version Check"
@@ -132,7 +308,7 @@
     <issue
         id="ObsoleteSdkInt"
         severity="Warning"
-        message="Unnecessary; SDK_INT is always >= 15"
+        message="Unnecessary; `SDK_INT` is always >= 15"
         category="Performance"
         priority="6"
         summary="Obsolete SDK_INT Version Check"
@@ -148,7 +324,7 @@
     <issue
         id="ObsoleteSdkInt"
         severity="Warning"
-        message="Unnecessary; SDK_INT is always >= 15"
+        message="Unnecessary; `SDK_INT` is always >= 15"
         category="Performance"
         priority="6"
         summary="Obsolete SDK_INT Version Check"
@@ -164,7 +340,7 @@
     <issue
         id="ObsoleteSdkInt"
         severity="Warning"
-        message="Unnecessary; SDK_INT is always >= 15"
+        message="Unnecessary; `SDK_INT` is always >= 15"
         category="Performance"
         priority="6"
         summary="Obsolete SDK_INT Version Check"
@@ -180,7 +356,7 @@
     <issue
         id="ObsoleteSdkInt"
         severity="Warning"
-        message="Unnecessary; SDK_INT is always >= 15"
+        message="Unnecessary; `SDK_INT` is always >= 15"
         category="Performance"
         priority="6"
         summary="Obsolete SDK_INT Version Check"
@@ -196,7 +372,7 @@
     <issue
         id="ObsoleteSdkInt"
         severity="Warning"
-        message="Unnecessary; SDK_INT is always >= 14"
+        message="Unnecessary; `SDK_INT` is always >= 14"
         category="Performance"
         priority="6"
         summary="Obsolete SDK_INT Version Check"
@@ -212,7 +388,7 @@
     <issue
         id="ObsoleteSdkInt"
         severity="Warning"
-        message="Unnecessary; SDK_INT is always >= 11"
+        message="Unnecessary; `SDK_INT` is always >= 11"
         category="Performance"
         priority="6"
         summary="Obsolete SDK_INT Version Check"
