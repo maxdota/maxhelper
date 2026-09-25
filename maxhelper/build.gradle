@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
 }
 apply from: "$rootDir/gradle-mvn-push.gradle"
 
@@ -14,8 +13,9 @@ android {
         versionName '1.1.1'
     }
     namespace 'com.maxdota.maxhelper'
-    kotlinOptions {
-        jvmTarget = '17'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 

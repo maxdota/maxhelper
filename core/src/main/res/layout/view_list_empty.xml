@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:gravity="center_horizontal"
+  android:orientation="vertical"
+  tools:parentTag="androidx.appcompat.widget.LinearLayoutCompat">
+
+  <androidx.appcompat.widget.AppCompatImageView
+    android:id="@+id/imageView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    tools:src="@drawable/image_empty_list" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/textLabel"
+    style="@style/TextBold.Medium"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginHorizontal="@dimen/space_large"
+    android:layout_marginTop="@dimen/space_medium"
+    android:gravity="center"
+    android:visibility="gone"
+    tools:text="No Item Found"
+    tools:visibility="visible" />
+
+  <androidx.appcompat.widget.AppCompatTextView
+    android:id="@+id/textDescription"
+    style="@style/TextNormal.Small"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginHorizontal="@dimen/space_large"
+    android:layout_marginTop="@dimen/space_tiny"
+    android:gravity="center"
+    android:visibility="gone"
+    tools:text="There is no item in this list"
+    tools:visibility="visible" />
+</merge>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="error_no_internet_connection">Không có kết nối mạng</string>
+  <string name="error_api_connection">Lỗi kết nối. Vui lòng thử lại</string>
+  <string name="error_null_data">Lỗi dữ liệu trống</string>
+  <string name="error_api_message">Thao tác chưa được</string>
+  <string name="error_unknown_null_data">Lỗi không xác định (data trống)</string>
+  <string name="error_unknown_null_response">Lỗi không xác định (response trống)</string>
+
+  <string name="dismiss">Tắt</string>
+  <string name="yes">Đồng Ý</string>
+  <string name="no">Không</string>
+  <string name="cancel">Hủy</string>
+  <string name="do_you_want_to_s">Bạn có muốn %s?</string>
+  <string name="ok">OK</string>
+  <string name="error">Lỗi</string>
+  <string name="error_generic">Lỗi không xác định</string>
+  <string name="retry">Thử lại</string>
+  <string name="close">Đóng</string>
+  <string name="back">Quay Lại</string>
+</resources>

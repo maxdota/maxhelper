@@ -1,0 +1,24 @@
+<resources>
+  <dimen name="activity_horizontal_margin">16dp</dimen>
+  <dimen name="activity_vertical_margin">16dp</dimen>
+  <dimen name="fab_margin">16dp</dimen>
+
+  <!--popular distances-->
+  <dimen name="space_tiny">4dp</dimen>
+  <dimen name="space_small">8dp</dimen>
+  <dimen name="space_medium">16dp</dimen>
+  <dimen name="space_large">32dp</dimen>
+
+  <dimen name="icon_size">50dp</dimen>
+  <dimen name="icon_padding">10dp</dimen>
+
+  <!--text sizes-->
+  <dimen name="text_size_micro">12sp</dimen>
+  <dimen name="text_size_small">14sp</dimen>
+  <dimen name="text_size_medium">16sp</dimen>
+  <dimen name="text_size_large">22sp</dimen>
+
+  <!--cell widget dimens-->
+  <dimen name="cell_height">60dp</dimen>
+  <dimen name="cell_image_size">40dp</dimen>
+</resources>

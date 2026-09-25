@@ -1,0 +1,22 @@
+<resources>
+  <style name="TextActionBar">
+    <item name="android:textSize">20sp</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+  <style name="TextBold">
+    <item name="android:textColor">@color/text_bold</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+  <style name="TextBold.Medium">
+    <item name="android:textSize">@dimen/text_size_medium</item>
+  </style>
+  <style name="TextNormal">
+    <item name="android:textColor">@color/text_default</item>
+  </style>
+  <style name="TextNormal.Medium">
+    <item name="android:textSize">@dimen/text_size_medium</item>
+  </style>
+  <style name="TextNormal.Small">
+    <item name="android:textSize">@dimen/text_size_small</item>
+  </style>
+</resources>
