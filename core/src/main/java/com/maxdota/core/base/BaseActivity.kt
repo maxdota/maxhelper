@@ -9,7 +9,9 @@ import androidx.core.view.WindowInsetsCompat
 import com.maxdota.core.R
 import com.maxdota.core.helper.L
 
-abstract class BaseActivity(layoutId: Int) : AppCompatActivity(layoutId) {
+abstract class BaseActivity(
+  layoutId: Int = R.layout.activity_base
+) : AppCompatActivity(layoutId) {
   var currentFragment: BaseFragment<*>? = null
   var backAction: String? = null
 

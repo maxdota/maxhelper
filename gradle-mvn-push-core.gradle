@@ -6,13 +6,14 @@ def gitLabKey = properties.getProperty('gitLabKey')
 
 // get git lab key in git lab, public libs project
 // run gradle task maxhelper build/build, then publishing/publish
+// for local update, choose publishToMavenLocal
 
 publishing {
     publications {
         library(MavenPublication) {
             groupId "com.maxdota"
             artifactId "core"
-            version "0.0.2"
+            version "0.0.7"
             artifact "$buildDir/outputs/aar/core-debug.aar"
         }
     }
@@ -28,4 +29,12 @@ publishing {
             }
         }
     }
+}
+
+tasks.withType(PublishToMavenRepository).configureEach {
+    dependsOn 'build'
+}
+
+tasks.withType(PublishToMavenLocal).configureEach {
+    dependsOn 'build'
 }

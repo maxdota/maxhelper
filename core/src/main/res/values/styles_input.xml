@@ -1,0 +1,18 @@
+<resources>
+
+  <style name="NormalInputWithStartDrawable" parent="NormalInput">
+    <item name="android:paddingStart">10dp</item>
+  </style>
+
+  <style name="NormalInput">
+    <item name="android:layout_width">290dp</item>
+    <item name="android:layout_height">35dp</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:drawablePadding">6dp</item>
+    <item name="android:paddingStart">12dp</item>
+    <item name="android:paddingEnd">6dp</item>
+    <item name="android:background">@drawable/background_round_corner_white</item>
+    <item name="android:inputType">text</item>
+  </style>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+
+  <style name="BaseDialogTheme" parent="Theme.MaterialComponents.Dialog.Alert">
+    <item name="android:windowBackground">@drawable/background_dialog</item>
+    <item name="android:windowIsFloating">true</item>
+  </style>
+</resources>

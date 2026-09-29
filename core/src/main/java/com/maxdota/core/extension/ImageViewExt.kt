@@ -18,3 +18,12 @@ fun ImageView.setImageResourceFromString(
     } ?: defaultRes
   )
 }
+
+fun ImageView.setImageResourceOrHideWhenEmpty(resId: Int?) {
+  if (resId == null || resId == 0) {
+    gone()
+  } else {
+    visible()
+    setImageResource(resId)
+  }
+}

@@ -6,6 +6,7 @@
   <string name="error_api_message">Thao tác chưa được</string>
   <string name="error_unknown_null_data">Lỗi không xác định (data trống)</string>
   <string name="error_unknown_null_response">Lỗi không xác định (response trống)</string>
+  <string name="error_unknown_api_error">%1$s (%2$s)</string>
 
   <string name="dismiss">Tắt</string>
   <string name="yes">Đồng Ý</string>
