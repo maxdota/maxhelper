@@ -13,7 +13,7 @@ publishing {
         library(MavenPublication) {
             groupId "com.maxdota"
             artifactId "core"
-            version "0.0.7"
+            version "0.0.7-3"
             artifact "$buildDir/outputs/aar/core-debug.aar"
         }
     }

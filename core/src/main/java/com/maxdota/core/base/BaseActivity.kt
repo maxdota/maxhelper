@@ -3,6 +3,7 @@ package com.maxdota.core.base
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -34,6 +35,12 @@ abstract class BaseActivity(
 
   fun showKeyboard(view: View) {
     (getSystemService("input_method") as InputMethodManager).showSoftInput(view, 0)
+  }
+
+  fun showKeyboard(input: EditText?) {
+    val input = input ?: return
+    input.requestFocus()
+    (getSystemService("input_method") as InputMethodManager).showSoftInput(input, 0)
   }
 
   protected fun setPaddingForEdgeToEdge(view: View) {
