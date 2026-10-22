@@ -4,6 +4,9 @@
     <attr name="textLabel" format="string" />
     <attr name="textColor" format="color" />
     <attr name="textDescription" format="string" />
+    <attr name="textHint" format="string" />
+    <attr name="textAutofillHint" format="string" />
+    <attr name="android:inputType" />
     <attr name="imageIcon" format="reference" />
     <attr name="imageIconSize" format="dimension" />
     <attr name="hasIcon" format="boolean" />

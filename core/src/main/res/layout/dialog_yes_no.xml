@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content">
+
+  <androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/textMessage"
+      style="@style/TextNormal.Medium"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal"
+      android:layout_margin="@dimen/space_medium"
+      android:gravity="center_horizontal"
+      tools:text="Bạn có muốn thoát ứng dụng?" />
+
+    <View
+      android:id="@+id/divider"
+      style="@style/HorizontalDivider" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+
+      <Button
+        android:id="@+id/buttonAction"
+        style="@style/TransparentWideButton"
+        android:layout_weight="1"
+        tools:text="@string/exit" />
+
+      <View
+        style="@style/VerticalDivider"
+        android:layout_marginVertical="@dimen/space_small" />
+
+      <Button
+        android:id="@+id/buttonCancel"
+        style="@style/TransparentWideButton"
+        android:layout_weight="1"
+        android:text="@string/no" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+  </androidx.appcompat.widget.LinearLayoutCompat>
+</RelativeLayout>

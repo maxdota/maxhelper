@@ -17,6 +17,7 @@ abstract class BaseActivity(
   var backAction: String? = null
 
   abstract fun fragment(): BaseFragment<*>
+  open fun backgroundResId(): Int? = null
 
   fun toFragment(fragment: BaseFragment<*>) {
     L.d(TAG, "toFragment: ${fragment.javaClass.simpleName}")
@@ -31,6 +32,12 @@ abstract class BaseActivity(
     L.d(TAG, "popToFragment: $name")
     backAction = action
     supportFragmentManager.popBackStack(name, 0)
+  }
+
+  // this is used to prevent user from coming back to the previous fragment
+  fun popBackStack() {
+    L.d(TAG, "popBackStack")
+    supportFragmentManager.popBackStack()
   }
 
   fun showKeyboard(view: View) {
@@ -57,7 +64,9 @@ abstract class BaseActivity(
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setPaddingForEdgeToEdge(findViewById(R.id.fragment_container_view))
+    val containerView = findViewById<View>(R.id.fragment_container_view)
+    setPaddingForEdgeToEdge(containerView)
+    backgroundResId()?.let { containerView.setBackgroundResource(it) }
 
     if (savedInstanceState == null) {
       toFragment(fragment())

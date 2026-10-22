@@ -2,14 +2,16 @@ package com.maxdota.core.model
 
 class ApiError(
   message: String,
+  val errorCode: Int,
   val code: String,
-  val data: Any?
+  val fields: Map<String, String>
 ) : Throwable(message) {
   companion object {
-    fun fromErrorResponse(errorData: ErrorData) = ApiError(
+    fun fromErrorResponse(errorCode: Int, errorData: ErrorData) = ApiError(
       message = errorData.message,
+      errorCode = errorCode,
       code = errorData.code,
-      data = errorData.data,
+      fields = errorData.fields
     )
   }
 }

@@ -6,8 +6,10 @@
   <!--popular distances-->
   <dimen name="space_tiny">4dp</dimen>
   <dimen name="space_small">8dp</dimen>
+  <dimen name="space_12">12dp</dimen>
   <dimen name="space_medium">16dp</dimen>
   <dimen name="space_large">32dp</dimen>
+  <dimen name="space_huge">64dp</dimen>
 
   <dimen name="icon_size">50dp</dimen>
   <dimen name="icon_padding">10dp</dimen>

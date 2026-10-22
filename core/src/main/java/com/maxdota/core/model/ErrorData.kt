@@ -7,6 +7,6 @@ data class ErrorData(
   val code: String = "",
   @SerializedName("message")
   val message: String = "",
-  @SerializedName("data")
-  val data: Any? = null
+  @SerializedName("fields")
+  val fields: Map<String, String> = emptyMap()
 )

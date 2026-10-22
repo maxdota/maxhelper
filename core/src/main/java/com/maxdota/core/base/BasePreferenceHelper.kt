@@ -6,6 +6,7 @@ import androidx.preference.PreferenceManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
+import androidx.core.content.edit
 
 open class BasePreferenceHelper(val application: Application) {
   protected val mSharedPreferences by lazy {
@@ -16,9 +17,17 @@ open class BasePreferenceHelper(val application: Application) {
     (object : TypeToken<Map<Long, List<String>>>() {}).type
 
   fun saveString(key: String, value: String?) {
-    val editor = mSharedPreferences.edit()
-    editor.putString(key, value)
-    editor.apply()
+    mSharedPreferences.edit {
+      putString(key, value)
+    }
+  }
+
+  fun saveMultipleStrings(map: Map<String, String>) {
+    mSharedPreferences.edit {
+      map.forEach { (key, value) ->
+        putString(key, value)
+      }
+    }
   }
 
   fun getString(key: String, defaultValue: String? = null): String? {

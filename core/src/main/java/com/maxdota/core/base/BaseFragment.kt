@@ -19,6 +19,7 @@ import com.maxdota.core.extension.showToast
 import com.maxdota.core.helper.L
 import com.maxdota.core.view.ListEmptyView
 import com.maxdota.core.view.LoadingView
+import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseFragment<T : ViewBinding>(
   private val onBind: ((inflater: LayoutInflater, container: ViewGroup?) -> T)
@@ -26,6 +27,7 @@ abstract class BaseFragment<T : ViewBinding>(
   protected var isInactive = false
 
   protected val handler = Handler(Looper.getMainLooper())
+  protected val disposables = CompositeDisposable()
 
   private var _binding: T? = null
 
@@ -77,6 +79,7 @@ abstract class BaseFragment<T : ViewBinding>(
   override fun onDestroyView() {
     L.d(LIFE_CYCLE_TAG, "onDestroyView -> $this")
     isInactive = true
+    disposables.clear()
     super.onDestroyView()
     _binding = null
   }
@@ -108,6 +111,7 @@ abstract class BaseFragment<T : ViewBinding>(
 
   open fun onShowData(isListEmpty: Boolean) = Unit
   open fun onError() = Unit
+  open fun onFieldError(fieldErrorMap: Map<String, String>) = Unit
   open fun onErrorDialogConfirmClicked(extra: String?) = Unit
   open fun onErrorDialogDismissed(extra: String?) = Unit
 
@@ -128,6 +132,10 @@ abstract class BaseFragment<T : ViewBinding>(
       is BaseState.ErrorMessage -> {
         onError()
         showGenericSnackBar(binding.root, state.message.orEmpty())
+      }
+
+      is BaseState.FieldError -> {
+        onFieldError(state.fieldErrorMap)
       }
 
       is BaseState.Notice -> activity?.showToast(state.message)

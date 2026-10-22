@@ -14,4 +14,6 @@
   <color name="text_bold">#050505</color>
   <color name="text_default">#454545</color>
   <color name="text_hint">#888888</color>
+
+  <color name="red_error">#e30022</color>
 </resources>
