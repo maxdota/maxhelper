@@ -12,16 +12,19 @@ fun Throwable.getThrowableError(resources: Resources): String {
   when (this) {
     is HttpException -> {
       response()?.errorBody()?.let {
-        return getErrorMessage(it)
+        val errorMessage = getErrorMessage(it)
+        if (errorMessage.isNotBlank()) {
+          return errorMessage
+        }
       }
+      return message.orEmpty()
     }
 
     is UnknownHostException -> return resources.getString(R.string.error_no_internet_connection)
-    is SocketTimeoutException -> return this.message!!
-    is IOException -> return this.message!!
-    else -> return this.message ?: ""
+    is SocketTimeoutException -> return message.orEmpty()
+    is IOException -> return message.orEmpty()
+    else -> return message.orEmpty()
   }
-  return ""
 }
 
 private fun getErrorMessage(responseBody: ResponseBody): String {

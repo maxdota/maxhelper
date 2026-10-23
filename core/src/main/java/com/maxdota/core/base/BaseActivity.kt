@@ -15,6 +15,9 @@ abstract class BaseActivity(
 ) : AppCompatActivity(layoutId) {
   var currentFragment: BaseFragment<*>? = null
   var backAction: String? = null
+  val containerView by lazy {
+    findViewById<View>(R.id.fragment_container_view)
+  }
 
   abstract fun fragment(): BaseFragment<*>
   open fun backgroundResId(): Int? = null
@@ -64,7 +67,6 @@ abstract class BaseActivity(
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    val containerView = findViewById<View>(R.id.fragment_container_view)
     setPaddingForEdgeToEdge(containerView)
     backgroundResId()?.let { containerView.setBackgroundResource(it) }
 

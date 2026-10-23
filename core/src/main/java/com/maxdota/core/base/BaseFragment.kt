@@ -34,8 +34,8 @@ abstract class BaseFragment<T : ViewBinding>(
   // This property is only valid between onCreateView and onDestroyView.
   protected val binding get() = _binding!!
 
-  fun getBaseActivity(): BaseActivity? {
-    return activity as? BaseActivity
+  fun getBaseActivity(): BaseActivity {
+    return activity as BaseActivity
   }
 
   fun goBack() {
@@ -45,7 +45,7 @@ abstract class BaseFragment<T : ViewBinding>(
 
   fun toFragment(fragment: BaseFragment<*>) {
     L.d(FLOW_TAG, "toFragment -> $this to $fragment")
-    getBaseActivity()?.toFragment(fragment)
+    getBaseActivity().toFragment(fragment)
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +59,7 @@ abstract class BaseFragment<T : ViewBinding>(
     savedInstanceState: Bundle?
   ): View? {
     L.d(LIFE_CYCLE_TAG, "onCreateView -> $this")
-    getBaseActivity()?.currentFragment = this
+    getBaseActivity().currentFragment = this
     _binding = onBind(inflater, container)
     val view = binding.root
     return view
@@ -114,6 +114,7 @@ abstract class BaseFragment<T : ViewBinding>(
   open fun onFieldError(fieldErrorMap: Map<String, String>) = Unit
   open fun onErrorDialogConfirmClicked(extra: String?) = Unit
   open fun onErrorDialogDismissed(extra: String?) = Unit
+  open fun snackBarRootView() = binding.root
 
   // return true if the state is already handled
   // note: remember to override above methods depending on use case
@@ -126,12 +127,14 @@ abstract class BaseFragment<T : ViewBinding>(
       is BaseState.ShowData -> onShowData(state)
       is BaseState.Error -> {
         onError()
-        showGenericSnackBar(binding.root, state.throwable.getThrowableError(resources))
+//        showGenericSnackBar(binding.root, state.throwable.getThrowableError(resources))
+        showGenericSnackBar(snackBarRootView(), state.throwable.getThrowableError(resources))
       }
 
       is BaseState.ErrorMessage -> {
         onError()
-        showGenericSnackBar(binding.root, state.message.orEmpty())
+//        showGenericSnackBar(binding.root, state.message.orEmpty())
+        showGenericSnackBar(snackBarRootView(), state.message.orEmpty())
       }
 
       is BaseState.FieldError -> {
@@ -140,7 +143,8 @@ abstract class BaseFragment<T : ViewBinding>(
 
       is BaseState.Notice -> activity?.showToast(state.message)
       is BaseState.SnackBarNotice -> {
-        showGenericSnackBar(binding.root, state.message)
+//        showGenericSnackBar(binding.root, state.message)
+        showGenericSnackBar(snackBarRootView(), state.message)
       }
 
       is BaseState.ShortNotice -> activity?.showShortToast(state.message)
@@ -150,7 +154,8 @@ abstract class BaseFragment<T : ViewBinding>(
   }
 
   fun showGenericSnackBar(view: View, message: String) {
-    val snackBar = Snackbar.make(view, message, 3000)
+    val duration = if (message.length < 20) 3000 else 5000
+    val snackBar = Snackbar.make(view, message, duration)
     snackBar.setAction(R.string.dismiss) {
       snackBar.dismiss()
     }

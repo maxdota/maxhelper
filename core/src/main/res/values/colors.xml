@@ -16,4 +16,6 @@
   <color name="text_hint">#888888</color>
 
   <color name="red_error">#e30022</color>
+
+  <color name="blue">#0094e1</color>
 </resources>

@@ -18,7 +18,7 @@ abstract class BaseDialog : DialogFragment() {
     dialogRootView = View.inflate(activity, getLayoutId(), null)
     setupUi()
     val dialog = AlertDialog.Builder(
-      requireContext(), R.style.BaseDialogTheme
+      requireContext(), themeResID()
     ).setView(dialogRootView).create()
     return dialog
   }
@@ -26,4 +26,8 @@ abstract class BaseDialog : DialogFragment() {
   abstract fun getLayoutId(): Int
   open fun isDismissable() = false
   abstract fun setupUi()
+
+  fun getRootView() = dialogRootView
+
+  open fun themeResID() = R.style.BaseDialogTheme
 }
